@@ -27,3 +27,5 @@ class Todo {
         this.complete = !this.complete;
     }
 }
+
+export default Todo;
