@@ -1,4 +1,5 @@
 import inbox from "./inbox";
+import Todo from "./todo";
 
 function initializePage() {
     createInbox();
@@ -30,6 +31,21 @@ function loadProject(project) {
         todoContainer.appendChild(li);
     }
     main.appendChild(todoContainer);
+
+    // Create button to add new todos to current project
+    const addTodoBtn = document.createElement("button");
+    addTodoBtn.textContent = "Add todo";
+    addTodoBtn.addEventListener("click", () => {
+        const title = prompt("Title:");
+        const newTodo = new Todo(title);
+        project.addTodo(newTodo);
+
+        // Display new todo
+        const li = document.createElement("li");
+        li.textContent = `${newTodo.title}`;
+        todoContainer.appendChild(li);
+    });
+    main.appendChild(addTodoBtn);
 }
 
 export { initializePage };
