@@ -1,3 +1,3 @@
-import { currentProject, projects, initializePage } from "./initialPage";
+import { initializePage } from "./dom";
 
 initializePage();
