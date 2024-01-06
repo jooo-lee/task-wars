@@ -1,30 +1,32 @@
 import inbox from "./inbox";
 
 function initializePage() {
-    displayTodos(inbox);
-    initializeInbox();
+    createInbox();
 }
 
-function initializeInbox() {
+function createInbox() {
+    loadProject(inbox);
     const inboxLink = document.querySelector("#inbox");
     inboxLink.addEventListener("click", () => {
         // if inbox is active tab, return
         // set inbox as active tab
-        displayTodos(inbox);
+        loadProject(inbox);
     });
 }
 
-function displayTodos(project) {
+function loadProject(project) {
     const main = document.querySelector("main");
 
-    const tabTitle = document.createElement("h4");
+    // Display title of current project
+    const tabTitle = document.createElement("h2");
     tabTitle.textContent = project.title;
     main.appendChild(tabTitle);
 
+    // Get todos of current project and display them
     const todoContainer = document.createElement("ol");
     for (const todo of project.todos) {
         const li = document.createElement("li");
-        li.textContent = `${todo.title}, ${todo.dueDate}`;
+        li.textContent = `${todo.title}`;
         todoContainer.appendChild(li);
     }
     main.appendChild(todoContainer);
