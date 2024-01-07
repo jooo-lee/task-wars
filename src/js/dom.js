@@ -54,9 +54,12 @@ function loadProject(project) {
         const newTodo = new Todo(title);
         project.addTodo(newTodo);
 
-        // Display new todo
         const li = document.createElement("li");
-        li.textContent = `${newTodo.title}`;
+
+        // Create title of todo
+        const newTodoTitle = document.createElement("p");
+        newTodoTitle.textContent = newTodo.title;
+        li.appendChild(newTodoTitle);
 
         // Create button to delete existing todos from current project
         const deleteTodoBtn = document.createElement("button");
