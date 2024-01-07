@@ -33,6 +33,15 @@ function loadProject(project) {
         todoTitle.textContent = todo.title;
         li.appendChild(todoTitle);
 
+        // Create button to delete existing todos from current project
+        const deleteTodoBtn = document.createElement("button");
+        deleteTodoBtn.textContent = "Delete todo";
+        deleteTodoBtn.addEventListener("click", function () {
+            project.deleteTodo(todo.title);
+            this.parentElement.remove();
+        });
+        li.appendChild(deleteTodoBtn);
+
         todoContainer.appendChild(li);
     }
     main.appendChild(todoContainer);
@@ -48,6 +57,16 @@ function loadProject(project) {
         // Display new todo
         const li = document.createElement("li");
         li.textContent = `${newTodo.title}`;
+
+        // Create button to delete existing todos from current project
+        const deleteTodoBtn = document.createElement("button");
+        deleteTodoBtn.textContent = "Delete todo";
+        deleteTodoBtn.addEventListener("click", function () {
+            project.deleteTodo(newTodo.title);
+            this.parentElement.remove();
+        });
+        li.appendChild(deleteTodoBtn);
+
         todoContainer.appendChild(li);
     });
     main.appendChild(addTodoBtn);
