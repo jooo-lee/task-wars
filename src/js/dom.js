@@ -28,12 +28,12 @@ function loadProject(project) {
     for (const todo of project.todos) {
         const li = document.createElement("li");
 
-        // Create title of todo
+        // Display title of todo
         const todoTitle = document.createElement("p");
         todoTitle.textContent = todo.title;
         li.appendChild(todoTitle);
 
-        // Create button to delete existing todos from current project
+        // Create button to delete todo
         const deleteTodoBtn = document.createElement("button");
         deleteTodoBtn.textContent = "Delete todo";
         deleteTodoBtn.addEventListener("click", function () {
@@ -46,7 +46,7 @@ function loadProject(project) {
     }
     main.appendChild(todoContainer);
 
-    // Create button to add new todos to current project
+    // Create button to add new todos
     const addTodoBtn = document.createElement("button");
     addTodoBtn.textContent = "Add todo";
     addTodoBtn.addEventListener("click", () => {
@@ -56,12 +56,12 @@ function loadProject(project) {
 
         const li = document.createElement("li");
 
-        // Create title of todo
+        // Display title of new todo
         const newTodoTitle = document.createElement("p");
         newTodoTitle.textContent = newTodo.title;
         li.appendChild(newTodoTitle);
 
-        // Create button to delete existing todos from current project
+        // Create button to delete this todo
         const deleteTodoBtn = document.createElement("button");
         deleteTodoBtn.textContent = "Delete todo";
         deleteTodoBtn.addEventListener("click", function () {
