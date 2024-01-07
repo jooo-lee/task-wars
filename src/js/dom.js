@@ -27,7 +27,12 @@ function loadProject(project) {
     const todoContainer = document.createElement("ol");
     for (const todo of project.todos) {
         const li = document.createElement("li");
-        li.textContent = `${todo.title}`;
+
+        // Create title of todo
+        const todoTitle = document.createElement("p");
+        todoTitle.textContent = todo.title;
+        li.appendChild(todoTitle);
+
         todoContainer.appendChild(li);
     }
     main.appendChild(todoContainer);
