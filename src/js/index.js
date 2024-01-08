@@ -1,3 +1,3 @@
-import { initializePage } from "./dom";
+import { initializePage } from "./dom/dom";
 
 initializePage();
