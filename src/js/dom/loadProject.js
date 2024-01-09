@@ -12,18 +12,23 @@ function createDeleteTodoBtn(todoToBeDeleted, project) {
     return deleteTodoBtn;
 }
 
+function createTodoListItem(todo, project) {
+    const li = document.createElement("li");
+
+    const todoTitle = createParagraph(todo.title);
+    li.appendChild(todoTitle);
+
+    const deleteTodoBtn = createDeleteTodoBtn(todo, project);
+    li.appendChild(deleteTodoBtn);
+
+    return li;
+}
+
 function createListOfTodos(project) {
     const listOfTodos = document.createElement("ol");
     for (const todo of project.todos) {
-        const li = document.createElement("li");
-
-        const todoTitle = createParagraph(todo.title);
-        li.appendChild(todoTitle);
-
-        const deleteTodoBtn = createDeleteTodoBtn(todo, project);
-        li.appendChild(deleteTodoBtn);
-
-        listOfTodos.appendChild(li);
+        const todoListItem = createTodoListItem(todo, project);
+        listOfTodos.appendChild(todoListItem);
     }
     return listOfTodos;
 }
@@ -36,15 +41,8 @@ function createAddNewTodoBtn(listOfTodos, project) {
         const newTodo = new Todo(title);
         project.addTodo(newTodo);
 
-        const li = document.createElement("li");
-
-        const newTodoTitle = createParagraph(newTodo.title);
-        li.appendChild(newTodoTitle);
-
-        const deleteTodoBtn = createDeleteTodoBtn(newTodo, project);
-        li.appendChild(deleteTodoBtn);
-
-        listOfTodos.appendChild(li);
+        const todoListItem = createTodoListItem(newTodo, project);
+        listOfTodos.appendChild(todoListItem);
     });
     return addTodoBtn;
 }
