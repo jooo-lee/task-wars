@@ -6,7 +6,7 @@ function createDeleteTodoBtn(todoToBeDeleted, project) {
     const deleteTodoBtn = document.createElement("button");
     deleteTodoBtn.textContent = "Delete todo";
     deleteTodoBtn.addEventListener("click", function () {
-        project.deleteTodo(todoToBeDeleted.title);
+        project.deleteTodo(todoToBeDeleted);
         this.parentElement.remove();
     });
     return deleteTodoBtn;

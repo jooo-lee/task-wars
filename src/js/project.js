@@ -8,9 +8,9 @@ class Project {
         this.todos.push(todo);
     }
 
-    deleteTodo(todoName) {
+    deleteTodo(targetTodo) {
         const todoToBeDeleted = this.todos.find(
-            (todo) => todo.title === todoName
+            (todo) => todo.title === targetTodo.title
         );
         const indexOfTodoToBeDeleted = this.todos.indexOf(todoToBeDeleted);
 
