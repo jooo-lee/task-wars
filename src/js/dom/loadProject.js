@@ -18,6 +18,9 @@ function createTodoListItem(todo, project) {
     const todoTitle = createParagraph(todo.title);
     li.appendChild(todoTitle);
 
+    const todoDueDate = createParagraph(todo.dueDate);
+    li.appendChild(todoDueDate);
+
     const deleteTodoBtn = createDeleteTodoBtn(todo, project);
     li.appendChild(deleteTodoBtn);
 
