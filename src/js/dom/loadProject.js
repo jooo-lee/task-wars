@@ -2,11 +2,11 @@ import Todo from "../todo";
 import createHeading2 from "./createHeading2";
 import createParagraph from "./createParagraph";
 
-function createDeleteTodoBtn(todoToBeDeleted, project) {
+function createDeleteTodoBtn(todo, project) {
     const deleteTodoBtn = document.createElement("button");
     deleteTodoBtn.textContent = "Delete todo";
     deleteTodoBtn.addEventListener("click", function () {
-        project.deleteTodo(todoToBeDeleted);
+        project.deleteTodo(todo);
         this.parentElement.remove();
     });
     return deleteTodoBtn;
