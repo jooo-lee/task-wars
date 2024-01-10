@@ -1,27 +1,8 @@
 import Todo from "../todo";
 import createHeading2 from "./createHeading2";
-import createParagraph from "./createParagraph";
-import createViewTodoDetailsBtn from "./todo-components/createViewTodoDetailsBtn";
-import createDeleteTodoBtn from "./todo-components/createDeleteTodoBtn";
+import createTodoListItem from "./todo-components/createTodoListItem";
 
-function createTodoListItem(todo, project) {
-    const li = document.createElement("li");
-
-    const todoTitle = createParagraph(todo.title);
-    li.appendChild(todoTitle);
-
-    const todoDueDate = createParagraph(todo.dueDate);
-    li.appendChild(todoDueDate);
-
-    const todoDetailsBtn = createViewTodoDetailsBtn(todo);
-    li.appendChild(todoDetailsBtn);
-
-    const deleteTodoBtn = createDeleteTodoBtn(todo, project);
-    li.appendChild(deleteTodoBtn);
-
-    return li;
-}
-
+// Here, list refers to the <ol> tag
 function createListOfTodos(project) {
     const listOfTodos = document.createElement("ol");
     for (const todo of project.todos) {
