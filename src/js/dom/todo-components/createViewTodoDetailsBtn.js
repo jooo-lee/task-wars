@@ -4,6 +4,24 @@ function closeModal(modal) {
     document.querySelector("body").style.overflow = "auto"; // Allow for scrolling after modal is closed
 }
 
+function loadTodoDetails(todo, modal) {
+    const title = document.createElement("p");
+    title.textContent = `Title: ${todo.title}`;
+    modal.appendChild(title);
+
+    const description = document.createElement("p");
+    description.textContent = `Description: ${todo.description}`;
+    modal.appendChild(description);
+
+    const dueDate = document.createElement("p");
+    dueDate.textContent = `Due: ${todo.dueDate}`;
+    modal.appendChild(dueDate);
+
+    const priority = document.createElement("p");
+    priority.textContent = `Priority: ${todo.priority}`;
+    modal.appendChild(priority);
+}
+
 function createViewTodoDetailsBtn(todo) {
     const todoDetailsBtn = document.createElement("button");
     todoDetailsBtn.textContent = "View details";
@@ -17,9 +35,7 @@ function createViewTodoDetailsBtn(todo) {
         });
         modal.appendChild(closeBtn);
 
-        const p = document.createElement("p");
-        p.textContent = "Todo details";
-        modal.appendChild(p);
+        loadTodoDetails(todo, modal);
 
         // Close modal when clicking outside of it
         modal.addEventListener("click", function (e) {
