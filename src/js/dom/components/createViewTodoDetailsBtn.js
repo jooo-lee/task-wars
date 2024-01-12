@@ -1,8 +1,4 @@
-function closeModal(modal) {
-    modal.close();
-    modal.remove();
-    document.querySelector("body").style.overflow = "auto"; // Allow for scrolling after modal is closed
-}
+import createModal from "./createModal";
 
 function loadTodoDetails(todo, modal) {
     const title = document.createElement("p");
@@ -26,34 +22,13 @@ function createViewTodoDetailsBtn(todo) {
     const todoDetailsBtn = document.createElement("button");
     todoDetailsBtn.textContent = "View details";
     todoDetailsBtn.addEventListener("click", function () {
-        const modal = document.createElement("dialog");
-
-        const closeBtn = document.createElement("button");
-        closeBtn.textContent = "Close";
-        closeBtn.addEventListener("click", function () {
-            closeModal(modal);
-        });
-        modal.appendChild(closeBtn);
-
-        loadTodoDetails(todo, modal);
-
-        // Close modal when clicking outside of it
-        modal.addEventListener("click", function (e) {
-            const modalDimensions = modal.getBoundingClientRect();
-            if (
-                e.clientX < modalDimensions.left ||
-                e.clientX > modalDimensions.right ||
-                e.clientY < modalDimensions.top ||
-                e.clientY > modalDimensions.bottom
-            ) {
-                closeModal(modal);
-            }
-        });
+        const detailsModal = createModal();
+        loadTodoDetails(todo, detailsModal);
 
         const body = document.querySelector("body");
-        body.appendChild(modal);
+        body.appendChild(detailsModal);
         body.style.overflow = "hidden"; // Prevent scrolling of background
-        modal.showModal();
+        detailsModal.showModal();
     });
     return todoDetailsBtn;
 }
