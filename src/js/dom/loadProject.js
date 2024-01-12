@@ -1,5 +1,4 @@
 import Todo from "../todo";
-import createHeading2 from "./createHeading2";
 import createTodoListItem from "./todo-components/createTodoListItem";
 
 // Here, list refers to the <ol> tag
@@ -29,7 +28,8 @@ function createAddNewTodoBtn(listOfTodos, project) {
 function loadProject(project) {
     const main = document.querySelector("main");
 
-    const tabTitle = createHeading2(project.title);
+    const tabTitle = document.createElement("h2");
+    tabTitle.textContent = project.title;
     main.appendChild(tabTitle);
 
     const todosOfProject = createListOfTodos(project);

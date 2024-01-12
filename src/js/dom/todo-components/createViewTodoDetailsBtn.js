@@ -1,5 +1,3 @@
-import createParagraph from "../createParagraph";
-
 function closeModal(modal) {
     modal.close();
     modal.remove();
@@ -19,7 +17,8 @@ function createViewTodoDetailsBtn(todo) {
         });
         modal.appendChild(closeBtn);
 
-        const p = createParagraph("Todo details");
+        const p = document.createElement("p");
+        p.textContent = "Todo details";
         modal.appendChild(p);
 
         // Close modal when clicking outside of it

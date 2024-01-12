@@ -1,4 +1,3 @@
-import createParagraph from "../createParagraph";
 import createViewTodoDetailsBtn from "./createViewTodoDetailsBtn";
 import createDeleteTodoBtn from "./createDeleteTodoBtn";
 
@@ -6,10 +5,12 @@ import createDeleteTodoBtn from "./createDeleteTodoBtn";
 function createTodoListItem(todo, project) {
     const li = document.createElement("li");
 
-    const todoTitle = createParagraph(todo.title);
+    const todoTitle = document.createElement("p");
+    todoTitle.textContent = todo.title;
     li.appendChild(todoTitle);
 
-    const todoDueDate = createParagraph(todo.dueDate);
+    const todoDueDate = document.createElement("p");
+    todoDueDate.textContent = todo.dueDate;
     li.appendChild(todoDueDate);
 
     const todoDetailsBtn = createViewTodoDetailsBtn(todo);
