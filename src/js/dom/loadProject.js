@@ -1,4 +1,4 @@
-import Todo from "../todo";
+import createAddNewTodoBtn from "./todo-components/createAddNewTodoBtn";
 import createTodoListItem from "./todo-components/createTodoListItem";
 
 // Here, list refers to the <ol> tag
@@ -9,20 +9,6 @@ function createListOfTodos(project) {
         listOfTodos.appendChild(todoListItem);
     }
     return listOfTodos;
-}
-
-function createAddNewTodoBtn(listOfTodos, project) {
-    const addTodoBtn = document.createElement("button");
-    addTodoBtn.textContent = "Add todo";
-    addTodoBtn.addEventListener("click", () => {
-        const title = prompt("Title:");
-        const newTodo = new Todo(title);
-        project.addTodo(newTodo);
-
-        const todoListItem = createTodoListItem(newTodo, project);
-        listOfTodos.appendChild(todoListItem);
-    });
-    return addTodoBtn;
 }
 
 function loadProject(project) {
