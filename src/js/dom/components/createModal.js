@@ -29,4 +29,4 @@ function createModal() {
     return modal;
 }
 
-export default createModal;
+export { createModal, closeModal };
