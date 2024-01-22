@@ -5,9 +5,9 @@ import Todo from "./todo";
 const inbox = new Project("Inbox");
 
 // Creating sample todos for testing
-const task1 = new Todo("stretch", "toe touches", "today", "med");
-const task2 = new Todo("work out", "pushups", "today", "high");
-const task3 = new Todo("read", "10 pages", "today", "low");
+const task1 = new Todo("Stretch", "Toe touches", "2024-01-22", "Medium");
+const task2 = new Todo("Work out", "Pushups", "2024-01-24", "High");
+const task3 = new Todo("Read", "10 pages", "2024-02-14", "Low");
 
 // Adding sample todos
 inbox.addTodo(task1);
