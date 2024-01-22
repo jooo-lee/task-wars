@@ -79,6 +79,24 @@ function createAddNewTodoBtn(listOfTodos, project) {
         submitBtn.textContent = "Submit";
         newTodoForm.appendChild(submitBtn);
 
+        newTodoForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const newTodo = new Todo(
+                this.elements["title"].value,
+                this.elements["description"].value,
+                this.elements["due-date"].value,
+                this.elements["priority"].value
+            );
+
+            project.addTodo(newTodo);
+
+            const todoListItem = createTodoListItem(newTodo, project);
+            listOfTodos.appendChild(todoListItem);
+
+            closeModal(newTodoModal);
+        });
+
         newTodoModal.appendChild(newTodoForm);
 
         const body = document.querySelector("body");
