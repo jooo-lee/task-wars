@@ -1,5 +1,5 @@
 import Todo from "../../todo";
-import createModal from "./createModal";
+import { createModal, closeModal } from "./createModal";
 import createTodoListItem from "./createTodoListItem";
 
 function createAddNewTodoBtn(listOfTodos, project) {

@@ -1,4 +1,4 @@
-import createModal from "./createModal";
+import { createModal, closeModal } from "./createModal";
 
 function loadTodoDetails(todo, modal) {
     const title = document.createElement("p");
