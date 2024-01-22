@@ -1,5 +1,5 @@
-import createViewTodoDetailsBtn from "./createViewTodoDetailsBtn";
-import createDeleteTodoBtn from "./createDeleteTodoBtn";
+import createViewTodoDetailsBtn from "./viewTodoDetailsBtn";
+import createDeleteTodoBtn from "./deleteTodoBtn";
 
 // Here, list item refers to the <li> tag
 function createTodoListItem(todo, project) {

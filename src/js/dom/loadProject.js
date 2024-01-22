@@ -1,5 +1,5 @@
-import createListOfTodos from "./components/createListOfTodos";
-import createAddNewTodoBtn from "./components/createAddNewTodoBtn";
+import createListOfTodos from "./components/listOfTodos";
+import createAddNewTodoBtn from "./components/addNewTodoBtn";
 
 function loadProject(project) {
     const main = document.querySelector("main");

@@ -1,4 +1,4 @@
-import createTodoListItem from "./createTodoListItem";
+import createTodoListItem from "./todoListItem";
 
 // Here, list refers to the <ol> tag
 function createListOfTodos(project) {
