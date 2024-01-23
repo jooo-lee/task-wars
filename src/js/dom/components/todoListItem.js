@@ -5,7 +5,16 @@ import createDeleteTodoBtn from "./deleteTodoBtn";
 function createTodoListItem(todo, project) {
     const li = document.createElement("li");
 
-    const todoTitle = document.createElement("p");
+    const checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.name = todo.title;
+    checkBox.addEventListener("click", function () {
+        todo.complete = this.checked;
+    });
+    li.appendChild(checkBox);
+
+    const todoTitle = document.createElement("label");
+    todoTitle.for = todo.title;
     todoTitle.textContent = todo.title;
     li.appendChild(todoTitle);
 
