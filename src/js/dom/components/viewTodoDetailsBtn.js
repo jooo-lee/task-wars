@@ -1,34 +1,15 @@
-import { createModal } from "./modal";
-
-function loadTodoDetails(todo, modal) {
-    const title = document.createElement("p");
-    title.textContent = `Title: ${todo.title}`;
-    modal.appendChild(title);
-
-    const description = document.createElement("p");
-    description.textContent = `Description: ${todo.description}`;
-    modal.appendChild(description);
-
-    const dueDate = document.createElement("p");
-    dueDate.textContent = `Due: ${todo.dueDate}`;
-    modal.appendChild(dueDate);
-
-    const priority = document.createElement("p");
-    priority.textContent = `Priority: ${todo.priority}`;
-    modal.appendChild(priority);
-}
+import createTodoDetailsModal from "./todoDetailsModal";
 
 function createViewTodoDetailsBtn(todo) {
     const todoDetailsBtn = document.createElement("button");
     todoDetailsBtn.textContent = "View details";
     todoDetailsBtn.addEventListener("click", function () {
-        const detailsModal = createModal();
-        loadTodoDetails(todo, detailsModal);
+        const todoDetailsModal = createTodoDetailsModal(todo);
 
         const body = document.querySelector("body");
-        body.appendChild(detailsModal);
+        body.appendChild(todoDetailsModal);
         body.style.overflow = "hidden"; // Prevent scrolling of background
-        detailsModal.showModal();
+        todoDetailsModal.showModal();
     });
     return todoDetailsBtn;
 }
