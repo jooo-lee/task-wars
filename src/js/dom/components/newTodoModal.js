@@ -2,14 +2,37 @@ import Todo from "../../todo";
 import { createModal, closeModal } from "./modal";
 import createTodoListItem from "./todoListItem";
 
-function createNewTodoModal(listOfTodos, project) {
+// Callback for handling new todo form submission
+function addNewTodo(project) {
+    const newTodoForm = document.querySelector("#new-todo-form");
+
+    const newTodo = new Todo(
+        newTodoForm.elements["title"].value,
+        newTodoForm.elements["description"].value,
+        newTodoForm.elements["due-date"].value,
+        newTodoForm.elements["priority"].value
+    );
+
+    project.addTodo(newTodo);
+
+    const todoListItem = createTodoListItem(newTodo, project);
+    const listOfTodos = document.querySelector("#list-of-todos");
+    listOfTodos.appendChild(todoListItem);
+
+    const newTodoModal = document.querySelector("#new-todo-modal");
+    closeModal(newTodoModal);
+}
+
+function createNewTodoModal(project) {
     const newTodoModal = createModal();
+    newTodoModal.id = "new-todo-modal";
 
     const p = document.createElement("p");
     p.textContent = "Add Todo";
     newTodoModal.appendChild(p);
 
     const newTodoForm = document.createElement("form");
+    newTodoForm.id = "new-todo-form";
 
     const titleLabel = document.createElement("label");
     titleLabel.textContent = "Title: ";
@@ -75,22 +98,22 @@ function createNewTodoModal(listOfTodos, project) {
     submitBtn.textContent = "Submit";
     newTodoForm.appendChild(submitBtn);
 
-    newTodoForm.addEventListener("submit", function (e) {
+    // Handle "enter" key press when focused on input fields in new todo form
+    const elementsSubmittedOnEnter = [title, dueDate, priority];
+    elementsSubmittedOnEnter.forEach((elem) => {
+        elem.addEventListener("keydown", (e) => {
+            if (e.key == "Enter") {
+                e.preventDefault();
+                newTodoForm.checkValidity()
+                    ? addNewTodo(project)
+                    : newTodoForm.reportValidity();
+            }
+        });
+    });
+
+    newTodoForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
-        const newTodo = new Todo(
-            this.elements["title"].value,
-            this.elements["description"].value,
-            this.elements["due-date"].value,
-            this.elements["priority"].value
-        );
-
-        project.addTodo(newTodo);
-
-        const todoListItem = createTodoListItem(newTodo, project);
-        listOfTodos.appendChild(todoListItem);
-
-        closeModal(newTodoModal);
+        addNewTodo(project);
     });
 
     newTodoModal.appendChild(newTodoForm);

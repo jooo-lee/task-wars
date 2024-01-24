@@ -11,7 +11,7 @@ function loadProject(project) {
     const todosOfProject = createListOfTodos(project);
     main.appendChild(todosOfProject);
 
-    const addTodoBtn = createAddNewTodoBtn(todosOfProject, project);
+    const addTodoBtn = createAddNewTodoBtn(project);
     main.appendChild(addTodoBtn);
 }
 

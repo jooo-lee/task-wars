@@ -1,11 +1,11 @@
 import createNewTodoModal from "./newTodoModal";
 
-function createAddNewTodoBtn(listOfTodos, project) {
+function createAddNewTodoBtn(project) {
     const addTodoBtn = document.createElement("button");
     addTodoBtn.textContent = "Add todo";
 
     addTodoBtn.addEventListener("click", () => {
-        const newTodoModal = createNewTodoModal(listOfTodos, project);
+        const newTodoModal = createNewTodoModal(project);
 
         const body = document.querySelector("body");
         body.appendChild(newTodoModal);
