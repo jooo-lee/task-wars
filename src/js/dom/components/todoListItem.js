@@ -1,4 +1,4 @@
-import createViewTodoDetailsBtn from "./viewTodoDetailsBtn";
+import createViewTodoDetailsBtn from "./todoDetailsBtn";
 import createDeleteTodoBtn from "./deleteTodoBtn";
 
 // Here, list item refers to the <li> tag
