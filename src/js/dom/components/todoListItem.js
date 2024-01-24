@@ -1,4 +1,4 @@
-import createViewTodoDetailsBtn from "./todoDetailsBtn";
+import createTodoDetailsBtn from "./todoDetailsBtn";
 import createDeleteTodoBtn from "./deleteTodoBtn";
 
 // Here, list item refers to the <li> tag
@@ -22,7 +22,7 @@ function createTodoListItem(todo, project) {
     todoDueDate.textContent = todo.dueDate;
     li.appendChild(todoDueDate);
 
-    const todoDetailsBtn = createViewTodoDetailsBtn(todo);
+    const todoDetailsBtn = createTodoDetailsBtn(todo);
     li.appendChild(todoDetailsBtn);
 
     const deleteTodoBtn = createDeleteTodoBtn(todo, project);

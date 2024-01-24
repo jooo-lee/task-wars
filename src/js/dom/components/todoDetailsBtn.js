@@ -1,6 +1,6 @@
 import createTodoDetailsModal from "./todoDetailsModal";
 
-function createViewTodoDetailsBtn(todo) {
+function createTodoDetailsBtn(todo) {
     const todoDetailsBtn = document.createElement("button");
     todoDetailsBtn.textContent = "View details";
     todoDetailsBtn.addEventListener("click", function () {
@@ -14,4 +14,4 @@ function createViewTodoDetailsBtn(todo) {
     return todoDetailsBtn;
 }
 
-export default createViewTodoDetailsBtn;
+export default createTodoDetailsBtn;
