@@ -9,6 +9,7 @@ function createModal() {
 
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "Close";
+    closeBtn.type = "button";
     closeBtn.addEventListener("click", function () {
         closeModal(modal);
     });
