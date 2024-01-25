@@ -1,5 +1,6 @@
 import createTodoDetailsBtn from "./todoDetailsBtn";
 import createDeleteTodoBtn from "./deleteTodoBtn";
+import createEditTodoBtn from "./editTodoBtn";
 
 // Here, list item refers to the <li> tag
 function createTodoListItem(todo, project) {
@@ -24,6 +25,9 @@ function createTodoListItem(todo, project) {
 
     const todoDetailsBtn = createTodoDetailsBtn(todo);
     li.appendChild(todoDetailsBtn);
+
+    const editTodoBtn = createEditTodoBtn(todo);
+    li.appendChild(editTodoBtn);
 
     const deleteTodoBtn = createDeleteTodoBtn(todo, project);
     li.appendChild(deleteTodoBtn);
