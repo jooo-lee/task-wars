@@ -25,7 +25,29 @@ function addNewTodo(project) {
 }
 
 function createNewTodoForm(project) {
-    return createTodoForm(project, addNewTodo);
+    const newTodoForm = createTodoForm();
+
+    // Handle "enter" key press when focused on input fields in todo form
+    const submitOnEnterElements = [...newTodoForm.children].filter(
+        (child) => child.tagName == "INPUT" || child.tagName == "SELECT"
+    );
+    submitOnEnterElements.forEach((elem) => {
+        elem.addEventListener("keydown", (e) => {
+            if (e.key == "Enter") {
+                e.preventDefault();
+                newTodoForm.checkValidity()
+                    ? addNewTodo(project)
+                    : newTodoForm.reportValidity();
+            }
+        });
+    });
+
+    newTodoForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        addNewTodo(project);
+    });
+
+    return newTodoForm;
 }
 
 export default createNewTodoForm;

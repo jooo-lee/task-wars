@@ -1,4 +1,10 @@
-function createTodoForm(project, handleSubmit) {
+/* 
+Returns a form with fields for the user to enter todo details.
+Form submission behaviour, including the "enter" key being pressed, should be handled
+in the modules that depend on this one.
+*/
+
+function createTodoForm() {
     const todoForm = document.createElement("form");
 
     const titleLabel = document.createElement("label");
@@ -64,24 +70,6 @@ function createTodoForm(project, handleSubmit) {
     submitBtn.type = "submit";
     submitBtn.textContent = "Submit";
     todoForm.appendChild(submitBtn);
-
-    // Handle "enter" key press when focused on input fields in todo form
-    const elementsSubmittedOnEnter = [title, dueDate, priority];
-    elementsSubmittedOnEnter.forEach((elem) => {
-        elem.addEventListener("keydown", (e) => {
-            if (e.key == "Enter") {
-                e.preventDefault();
-                todoForm.checkValidity()
-                    ? handleSubmit(project)
-                    : todoForm.reportValidity();
-            }
-        });
-    });
-
-    todoForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        handleSubmit(project);
-    });
 
     return todoForm;
 }
