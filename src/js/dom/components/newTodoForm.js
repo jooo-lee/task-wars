@@ -27,7 +27,7 @@ function addNewTodo(project) {
 function createNewTodoForm(project) {
     const newTodoForm = createTodoForm();
 
-    // Handle "enter" key press when focused on input fields in todo form
+    // Handle "enter" key press when focused on certain fields in new todo form
     const submitOnEnterElements = [...newTodoForm.children].filter(
         (child) => child.tagName == "INPUT" || child.tagName == "SELECT"
     );
