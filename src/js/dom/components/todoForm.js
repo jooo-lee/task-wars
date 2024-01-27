@@ -50,18 +50,18 @@ function createTodoForm() {
     priority.name = "priority";
 
     const lowPriority = document.createElement("option");
-    lowPriority.value = "low-priority";
-    lowPriority.textContent = "Low Priority";
+    lowPriority.value = "Low";
+    lowPriority.textContent = lowPriority.value;
     priority.appendChild(lowPriority);
 
     const mediumPriority = document.createElement("option");
-    mediumPriority.value = "medium-priority";
-    mediumPriority.textContent = "Medium Priority";
+    mediumPriority.value = "Medium";
+    mediumPriority.textContent = mediumPriority.value;
     priority.appendChild(mediumPriority);
 
     const highPriority = document.createElement("option");
-    highPriority.value = "high-priority";
-    highPriority.textContent = "High Priority";
+    highPriority.value = "High";
+    highPriority.textContent = highPriority.value;
     priority.appendChild(highPriority);
 
     todoForm.appendChild(priority);
