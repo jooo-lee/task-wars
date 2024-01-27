@@ -12,6 +12,7 @@ function createTodoListItem(todo, project) {
     checkBox.addEventListener("click", function () {
         todo.complete = this.checked;
     });
+    checkBox.checked = todo.complete;
     li.appendChild(checkBox);
 
     const todoTitle = document.createElement("label");
@@ -26,7 +27,7 @@ function createTodoListItem(todo, project) {
     const todoDetailsBtn = createTodoDetailsBtn(todo);
     li.appendChild(todoDetailsBtn);
 
-    const editTodoBtn = createEditTodoBtn(todo);
+    const editTodoBtn = createEditTodoBtn(todo, project);
     li.appendChild(editTodoBtn);
 
     const deleteTodoBtn = createDeleteTodoBtn(todo, project);
