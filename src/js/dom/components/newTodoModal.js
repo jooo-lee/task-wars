@@ -3,6 +3,7 @@ import createNewTodoForm from "./newTodoForm";
 
 function createNewTodoModal(project) {
     const newTodoModal = createModal();
+    newTodoModal.id = "new-todo-modal";
 
     const p = document.createElement("p");
     p.textContent = "Add Todo";

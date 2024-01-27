@@ -4,7 +4,7 @@ import createTodoForm from "./todoForm";
 
 // Callback for handling edit todo form submission behaviour
 function editTodo(todo, project) {
-    const editTodoForm = document.querySelector("form");
+    const editTodoForm = document.querySelector("#edit-todo-form");
 
     // Update todo object properties
     todo.title = editTodoForm.elements["title"].value;
@@ -19,12 +19,13 @@ function editTodo(todo, project) {
     const newTodoListItem = createTodoListItem(todo, project);
     oldTodoListItem.replaceWith(newTodoListItem);
 
-    const editTodoModal = document.querySelector("dialog");
+    const editTodoModal = document.querySelector("#edit-todo-modal");
     closeModal(editTodoModal);
 }
 
 function createEditTodoForm(todo, project) {
     const editTodoForm = createTodoForm();
+    editTodoForm.id = "edit-todo-form";
 
     // Fill editTodoForm fields with current todo's details
     editTodoForm.elements["title"].value = todo.title;

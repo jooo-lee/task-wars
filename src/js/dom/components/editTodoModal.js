@@ -3,6 +3,7 @@ import createEditTodoForm from "./editTodoForm";
 
 function createEditTodoModal(todo, project) {
     const editTodoModal = createModal();
+    editTodoModal.id = "edit-todo-modal";
 
     const p = document.createElement("p");
     p.textContent = "Edit Todo";

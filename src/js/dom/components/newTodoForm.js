@@ -5,7 +5,7 @@ import createTodoForm from "./todoForm";
 
 // Callback for handling new todo form submission
 function addNewTodo(project) {
-    const newTodoForm = document.querySelector("form");
+    const newTodoForm = document.querySelector("#new-todo-form");
 
     const newTodo = new Todo(
         newTodoForm.elements["title"].value,
@@ -20,12 +20,13 @@ function addNewTodo(project) {
     const listOfTodos = document.querySelector("#list-of-todos");
     listOfTodos.appendChild(todoListItem);
 
-    const newTodoModal = document.querySelector("dialog");
+    const newTodoModal = document.querySelector("#new-todo-modal");
     closeModal(newTodoModal);
 }
 
 function createNewTodoForm(project) {
     const newTodoForm = createTodoForm();
+    newTodoForm.id = "new-todo-form";
 
     // Handle "enter" key press when focused on certain fields in new todo form
     const submitOnEnterElements = [...newTodoForm.children].filter(
