@@ -9,7 +9,7 @@ function createTodoForm() {
 
     const titleLabel = document.createElement("label");
     titleLabel.textContent = "Title: ";
-    titleLabel.for = "title";
+    titleLabel.setAttribute("for", "title");
     todoForm.appendChild(titleLabel);
 
     const title = document.createElement("input");
@@ -21,7 +21,7 @@ function createTodoForm() {
 
     const descriptionLabel = document.createElement("label");
     descriptionLabel.textContent = "Description: ";
-    descriptionLabel.for = "description";
+    descriptionLabel.setAttribute("for", "description");
     todoForm.appendChild(descriptionLabel);
 
     const description = document.createElement("textarea");
@@ -33,7 +33,7 @@ function createTodoForm() {
 
     const dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "Due Date: ";
-    dueDateLabel.for = "due-date";
+    dueDateLabel.setAttribute("for", "due-date");
     todoForm.appendChild(dueDateLabel);
 
     const dueDate = document.createElement("input");
@@ -43,7 +43,7 @@ function createTodoForm() {
 
     const priorityLabel = document.createElement("label");
     priorityLabel.textContent = "Priority: ";
-    priorityLabel.for = "priority";
+    priorityLabel.setAttribute("for", "priority");
     todoForm.appendChild(priorityLabel);
 
     const priority = document.createElement("select");
