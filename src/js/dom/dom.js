@@ -1,7 +1,9 @@
 import inbox from "../inbox";
+import handleAddProject from "./addProject";
 import loadProject from "./loadProject";
 
 function initializePage() {
+    handleAddProject();
     createInbox();
 }
 
