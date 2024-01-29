@@ -1,3 +1,5 @@
+import { closeDialog } from "./dialog";
+
 function createAddProjectForm() {
     const addProjectForm = document.createElement("form");
 
@@ -16,42 +18,25 @@ function createAddProjectForm() {
     cancelBtn.textContent = "Cancel";
     cancelBtn.value = "cancel";
     cancelBtn.type = "button";
-    cancelBtn.addEventListener("click", (e) => {
+    cancelBtn.addEventListener("click", function (e) {
         e.preventDefault();
         const addProjectDialog = document.querySelector("#add-project-dialog");
-        addProjectDialog.close();
-        addProjectDialog.remove();
+        closeDialog(addProjectDialog);
     });
     addProjectForm.appendChild(cancelBtn);
 
     const submitBtn = document.createElement("button");
     submitBtn.textContent = "Submit";
     submitBtn.value = "submit";
-    submitBtn.addEventListener("click", (e) => {
+    submitBtn.addEventListener("click", function (e) {
         e.preventDefault();
         console.log(addProjectForm.elements["new-project-name"].value);
         const addProjectDialog = document.querySelector("#add-project-dialog");
-        addProjectDialog.close();
-        addProjectDialog.remove();
+        closeDialog(addProjectDialog);
     });
     addProjectForm.appendChild(submitBtn);
 
     return addProjectForm;
 }
 
-function handleAddProject() {
-    const addProjectBtn = document.querySelector("#add-project");
-    const projectsList = document.querySelector("#project-list");
-    addProjectBtn.addEventListener("click", () => {
-        const addProjectDialog = document.createElement("dialog");
-        addProjectDialog.id = "add-project-dialog";
-
-        const addProjectForm = createAddProjectForm();
-        addProjectDialog.appendChild(addProjectForm);
-
-        projectsList.after(addProjectDialog);
-        addProjectDialog.show();
-    });
-}
-
-export default handleAddProject;
+export default createAddProjectForm;
