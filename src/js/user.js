@@ -9,7 +9,7 @@ class User {
 
     addProject(title) {
         const newProject = new Project(title);
-        userProjects.push(newProject);
+        this.#projects.push(newProject);
     }
 }
 
