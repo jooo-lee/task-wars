@@ -10,6 +10,7 @@ function createAddProjectForm(currentUser) {
     addProjectForm.appendChild(titleLabel);
 
     const title = document.createElement("input");
+    title.id = "new-project-title";
     title.type = "text";
     title.name = "new-project-title";
     title.required = true;

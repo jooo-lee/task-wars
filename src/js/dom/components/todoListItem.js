@@ -7,6 +7,7 @@ function createTodoListItem(todo, project) {
     const li = document.createElement("li");
 
     const checkBox = document.createElement("input");
+    checkBox.id = todo.title;
     checkBox.type = "checkbox";
     checkBox.name = todo.title;
     checkBox.addEventListener("click", function () {
@@ -16,7 +17,7 @@ function createTodoListItem(todo, project) {
     li.appendChild(checkBox);
 
     const todoTitle = document.createElement("label");
-    todoTitle.for = todo.title;
+    todoTitle.setAttribute("for", todo.title);
     todoTitle.textContent = todo.title;
     li.appendChild(todoTitle);
 
