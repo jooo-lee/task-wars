@@ -44,7 +44,6 @@ function createAddProjectForm(currentUser) {
         );
         currentUser.addProject(newProject);
 
-        console.log(currentUser.projects); // TODO: Display new project in DOM here
         const projectList = document.querySelector("#project-list");
         const projectListItem = createProjectListItem(newProject);
         projectList.appendChild(projectListItem);
