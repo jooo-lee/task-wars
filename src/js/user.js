@@ -1,5 +1,3 @@
-import Project from "./project";
-
 class User {
     #projects = []; // Later on we will load the user's projects using local storage
 
@@ -7,9 +5,8 @@ class User {
         return this.#projects;
     }
 
-    addProject(title) {
-        const newProject = new Project(title);
-        this.#projects.push(newProject);
+    addProject(project) {
+        this.#projects.push(project);
     }
 }
 
