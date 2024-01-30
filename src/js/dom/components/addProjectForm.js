@@ -1,6 +1,8 @@
+import Project from "../../project";
 import { closeDialog } from "./dialog";
+import createProjectListItem from "./projectListItem";
 
-function createAddProjectForm() {
+function createAddProjectForm(currentUser) {
     const addProjectForm = document.createElement("form");
 
     const titleLabel = document.createElement("label");
@@ -9,7 +11,7 @@ function createAddProjectForm() {
 
     const title = document.createElement("input");
     title.type = "text";
-    title.name = "new-project-name";
+    title.name = "new-project-title";
     title.required = true;
     title.placeholder = "Help Boba Fett";
     addProjectForm.appendChild(title);
@@ -30,7 +32,23 @@ function createAddProjectForm() {
     submitBtn.value = "submit";
     submitBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        console.log(addProjectForm.elements["new-project-name"].value);
+
+        // Prevent user from creating new project with no title
+        if (!addProjectForm.elements["new-project-title"].value) {
+            addProjectForm.reportValidity();
+            return;
+        }
+
+        const newProject = new Project(
+            addProjectForm.elements["new-project-title"].value
+        );
+        currentUser.addProject(newProject);
+
+        console.log(currentUser.projects); // TODO: Display new project in DOM here
+        const projectList = document.querySelector("#project-list");
+        const projectListItem = createProjectListItem(newProject);
+        projectList.appendChild(projectListItem);
+
         const addProjectDialog = document.querySelector("#add-project-dialog");
         closeDialog(addProjectDialog);
     });

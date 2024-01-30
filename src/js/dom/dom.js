@@ -2,8 +2,8 @@ import inbox from "../inbox";
 import createAddProjectDialog from "./components/addProjectDialog";
 import loadProject from "./loadProject";
 
-function initializePage() {
-    handleAddProject();
+function initializePage(currentUser) {
+    handleAddProject(currentUser);
     createInbox();
 }
 
@@ -17,11 +17,11 @@ function createInbox() {
     });
 }
 
-function handleAddProject() {
+function handleAddProject(currentUser) {
     const addProjectBtn = document.querySelector("#add-project-btn");
     const projectList = document.querySelector("#project-list");
     addProjectBtn.addEventListener("click", () => {
-        const addProjectDialog = createAddProjectDialog();
+        const addProjectDialog = createAddProjectDialog(currentUser);
         projectList.after(addProjectDialog);
         addProjectDialog.show();
     });

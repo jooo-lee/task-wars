@@ -3,4 +3,4 @@ import User from "./user";
 
 const currentUser = new User();
 
-initializePage();
+initializePage(currentUser);
