@@ -2,8 +2,21 @@ import Project from "../../project";
 import { closeDialog } from "./dialog";
 import createProjectListItem from "./projectListItem";
 
+function addProject(currentUser, projectTitle) {
+    const newProject = new Project(projectTitle);
+    currentUser.addProject(newProject);
+
+    const projectList = document.querySelector("#project-list");
+    const projectListItem = createProjectListItem(newProject);
+    projectList.appendChild(projectListItem);
+
+    const addProjectDialog = document.querySelector("#add-project-dialog");
+    closeDialog(addProjectDialog);
+}
+
 function createAddProjectForm(currentUser) {
     const addProjectForm = document.createElement("form");
+    addProjectForm.id = "add-project-form";
 
     const titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "new-project-title");
@@ -31,28 +44,15 @@ function createAddProjectForm(currentUser) {
     const submitBtn = document.createElement("button");
     submitBtn.textContent = "Submit";
     submitBtn.value = "submit";
-    submitBtn.addEventListener("click", function (e) {
+    addProjectForm.appendChild(submitBtn);
+
+    addProjectForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
-        // Prevent user from creating new project with no title
-        if (!addProjectForm.elements["new-project-title"].value) {
-            addProjectForm.reportValidity();
-            return;
-        }
-
-        const newProject = new Project(
+        addProject(
+            currentUser,
             addProjectForm.elements["new-project-title"].value
         );
-        currentUser.addProject(newProject);
-
-        const projectList = document.querySelector("#project-list");
-        const projectListItem = createProjectListItem(newProject);
-        projectList.appendChild(projectListItem);
-
-        const addProjectDialog = document.querySelector("#add-project-dialog");
-        closeDialog(addProjectDialog);
     });
-    addProjectForm.appendChild(submitBtn);
 
     return addProjectForm;
 }
