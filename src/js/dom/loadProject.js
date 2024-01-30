@@ -3,6 +3,7 @@ import createAddNewTodoBtn from "./components/newTodoBtn";
 
 function loadProject(project) {
     const main = document.querySelector("main");
+    main.replaceChildren();
 
     const tabTitle = document.createElement("h2");
     tabTitle.textContent = project.title;
