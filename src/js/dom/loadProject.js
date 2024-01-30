@@ -1,7 +1,16 @@
 import createListOfTodos from "./components/listOfTodos";
 import createAddNewTodoBtn from "./components/newTodoBtn";
 
+let currentProject;
+
 function loadProject(project) {
+    // Don't reload children in <main> if project is already displayed
+    if (project == currentProject) {
+        return;
+    } else {
+        currentProject = project;
+    }
+
     const main = document.querySelector("main");
     main.replaceChildren();
 
