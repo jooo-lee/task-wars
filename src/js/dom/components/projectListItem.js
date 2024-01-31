@@ -1,4 +1,5 @@
 import loadProject from "../loadProject";
+import createDeleteProjectBtn from "./deleteProjectBtn";
 
 function createProjectListItem(currentUser, project) {
     const projectListItem = document.createElement("li");
@@ -10,6 +11,9 @@ function createProjectListItem(currentUser, project) {
         loadProject(currentUser, project);
     });
     projectListItem.appendChild(projectLink);
+
+    const deleteProjectBtn = createDeleteProjectBtn(currentUser, project);
+    projectListItem.appendChild(deleteProjectBtn);
 
     return projectListItem;
 }
