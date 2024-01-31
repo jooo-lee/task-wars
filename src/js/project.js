@@ -16,7 +16,7 @@ class Project {
 
     deleteTodo(targetTodo) {
         const todoToBeDeleted = this.#todos.find(
-            (todo) => todo.title === targetTodo.title
+            (todo) => todo.uuid === targetTodo.uuid
         );
         const indexOfTodoToBeDeleted = this.#todos.indexOf(todoToBeDeleted);
 
