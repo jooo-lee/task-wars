@@ -1,7 +1,7 @@
 class User {
     #projects = []; // Later on we will load the user's projects using local storage
 
-    get projects() {
+    getProjects() {
         return this.#projects;
     }
 
