@@ -1,21 +1,27 @@
 class Project {
+    #todos;
+
     constructor(title) {
         this.title = title;
-        this.todos = [];
+        this.#todos = [];
+    }
+
+    getTodos() {
+        return this.#todos;
     }
 
     addTodo(todo) {
-        this.todos.push(todo);
+        this.#todos.push(todo);
     }
 
     deleteTodo(targetTodo) {
-        const todoToBeDeleted = this.todos.find(
+        const todoToBeDeleted = this.#todos.find(
             (todo) => todo.title === targetTodo.title
         );
-        const indexOfTodoToBeDeleted = this.todos.indexOf(todoToBeDeleted);
+        const indexOfTodoToBeDeleted = this.#todos.indexOf(todoToBeDeleted);
 
         if (indexOfTodoToBeDeleted > -1) {
-            this.todos.splice(indexOfTodoToBeDeleted, 1);
+            this.#todos.splice(indexOfTodoToBeDeleted, 1);
         }
     }
 }
