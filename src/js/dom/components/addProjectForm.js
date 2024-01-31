@@ -1,4 +1,5 @@
 import Project from "../../project";
+import loadProject from "../loadProject";
 import { closeDialog } from "./dialog";
 import createProjectListItem from "./projectListItem";
 
@@ -9,6 +10,8 @@ function addProject(currentUser, projectTitle) {
     const projectList = document.querySelector("#project-list");
     const projectListItem = createProjectListItem(currentUser, newProject);
     projectList.appendChild(projectListItem);
+
+    loadProject(currentUser, newProject);
 
     const addProjectDialog = document.querySelector("#add-project-dialog");
     closeDialog(addProjectDialog);
