@@ -1,3 +1,6 @@
 import { initializePage } from "./dom/dom";
+import User from "./user";
 
-initializePage();
+const currentUser = new User();
+
+initializePage(currentUser);

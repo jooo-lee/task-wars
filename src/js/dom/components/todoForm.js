@@ -13,6 +13,7 @@ function createTodoForm() {
     todoForm.appendChild(titleLabel);
 
     const title = document.createElement("input");
+    title.id = "title";
     title.type = "text";
     title.name = "title";
     title.required = true;
@@ -25,6 +26,7 @@ function createTodoForm() {
     todoForm.appendChild(descriptionLabel);
 
     const description = document.createElement("textarea");
+    description.id = "description";
     description.name = "description";
     description.placeholder = "Defeat Moff Gideon and retrieve the darksaber";
     description.rows = "10";
@@ -37,6 +39,7 @@ function createTodoForm() {
     todoForm.appendChild(dueDateLabel);
 
     const dueDate = document.createElement("input");
+    dueDate.id = "due-date";
     dueDate.type = "date";
     dueDate.name = "due-date";
     todoForm.appendChild(dueDate);
@@ -47,6 +50,7 @@ function createTodoForm() {
     todoForm.appendChild(priorityLabel);
 
     const priority = document.createElement("select");
+    priority.id = "priority";
     priority.name = "priority";
 
     const lowPriority = document.createElement("option");
