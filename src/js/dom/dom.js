@@ -1,17 +1,17 @@
-import inbox from "../inbox";
 import createAddProjectDialog from "./components/addProjectDialog";
 import loadProject from "./loadProject";
 
 function initializePage(currentUser) {
     handleAddProject(currentUser);
-    createInbox();
+    createInbox(currentUser);
 }
 
-function createInbox() {
-    loadProject(inbox);
+function createInbox(currentUser) {
+    loadProject(currentUser, currentUser.getInbox());
+
     const inboxLink = document.querySelector("#inbox");
     inboxLink.addEventListener("click", () => {
-        loadProject(inbox);
+        loadProject(currentUser, currentUser.getInbox());
     });
 }
 

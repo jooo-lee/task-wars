@@ -7,7 +7,7 @@ function addProject(currentUser, projectTitle) {
     currentUser.addProject(newProject);
 
     const projectList = document.querySelector("#project-list");
-    const projectListItem = createProjectListItem(newProject);
+    const projectListItem = createProjectListItem(currentUser, newProject);
     projectList.appendChild(projectListItem);
 
     const addProjectDialog = document.querySelector("#add-project-dialog");

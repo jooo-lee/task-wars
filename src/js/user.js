@@ -1,5 +1,18 @@
+import Project from "./project";
+
 class User {
-    #projects = []; // Later on we will load the user's projects using local storage
+    #projects;
+    #inbox;
+
+    constructor() {
+        this.#inbox = new Project("Inbox");
+        this.#projects = [this.#inbox];
+        this.currentProject = this.#inbox;
+    }
+
+    getInbox() {
+        return this.#inbox;
+    }
 
     getProjects() {
         return this.#projects;
