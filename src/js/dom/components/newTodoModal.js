@@ -6,7 +6,7 @@ function createNewTodoModal(project) {
     newTodoModal.id = "new-todo-modal";
 
     const p = document.createElement("p");
-    p.textContent = "Add Todo";
+    p.textContent = "New Todo";
     newTodoModal.appendChild(p);
 
     const newTodoForm = createNewTodoForm(project);

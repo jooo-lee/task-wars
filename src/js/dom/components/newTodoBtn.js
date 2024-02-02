@@ -1,10 +1,10 @@
 import createNewTodoModal from "./newTodoModal";
 
-function createAddNewTodoBtn(project) {
-    const addTodoBtn = document.createElement("button");
-    addTodoBtn.textContent = "Add todo";
+function createNewTodoBtn(project) {
+    const newTodoBtn = document.createElement("button");
+    newTodoBtn.textContent = "New todo";
 
-    addTodoBtn.addEventListener("click", () => {
+    newTodoBtn.addEventListener("click", () => {
         const newTodoModal = createNewTodoModal(project);
 
         const body = document.querySelector("body");
@@ -13,7 +13,7 @@ function createAddNewTodoBtn(project) {
 
         newTodoModal.showModal();
     });
-    return addTodoBtn;
+    return newTodoBtn;
 }
 
-export default createAddNewTodoBtn;
+export default createNewTodoBtn;

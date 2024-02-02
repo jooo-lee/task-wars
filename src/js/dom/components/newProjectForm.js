@@ -3,7 +3,7 @@ import loadProject from "../loadProject";
 import { closeDialog } from "./dialog";
 import createProjectListItem from "./projectListItem";
 
-function addProject(currentUser, projectTitle) {
+function addNewProject(currentUser, projectTitle) {
     const newProject = new Project(projectTitle);
     currentUser.addProject(newProject);
 
@@ -13,17 +13,17 @@ function addProject(currentUser, projectTitle) {
 
     loadProject(currentUser, newProject);
 
-    const addProjectDialog = document.querySelector("#add-project-dialog");
-    closeDialog(addProjectDialog);
+    const newProjectDialog = document.querySelector("#new-project-dialog");
+    closeDialog(newProjectDialog);
 }
 
-function createAddProjectForm(currentUser) {
-    const addProjectForm = document.createElement("form");
-    addProjectForm.id = "add-project-form";
+function createNewProjectForm(currentUser) {
+    const newProjectForm = document.createElement("form");
+    newProjectForm.id = "new-project-form";
 
     const titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "new-project-title");
-    addProjectForm.appendChild(titleLabel);
+    newProjectForm.appendChild(titleLabel);
 
     const title = document.createElement("input");
     title.id = "new-project-title";
@@ -31,7 +31,7 @@ function createAddProjectForm(currentUser) {
     title.name = "new-project-title";
     title.required = true;
     title.placeholder = "Help Boba Fett";
-    addProjectForm.appendChild(title);
+    newProjectForm.appendChild(title);
 
     const cancelBtn = document.createElement("button");
     cancelBtn.textContent = "Cancel";
@@ -39,25 +39,25 @@ function createAddProjectForm(currentUser) {
     cancelBtn.type = "button";
     cancelBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        const addProjectDialog = document.querySelector("#add-project-dialog");
-        closeDialog(addProjectDialog);
+        const newProjectDialog = document.querySelector("#new-project-dialog");
+        closeDialog(newProjectDialog);
     });
-    addProjectForm.appendChild(cancelBtn);
+    newProjectForm.appendChild(cancelBtn);
 
     const submitBtn = document.createElement("button");
     submitBtn.textContent = "Submit";
     submitBtn.value = "submit";
-    addProjectForm.appendChild(submitBtn);
+    newProjectForm.appendChild(submitBtn);
 
-    addProjectForm.addEventListener("submit", (e) => {
+    newProjectForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        addProject(
+        addNewProject(
             currentUser,
-            addProjectForm.elements["new-project-title"].value
+            newProjectForm.elements["new-project-title"].value
         );
     });
 
-    return addProjectForm;
+    return newProjectForm;
 }
 
-export default createAddProjectForm;
+export default createNewProjectForm;

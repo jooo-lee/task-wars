@@ -1,5 +1,5 @@
 import createListOfTodos from "./components/listOfTodos";
-import createAddNewTodoBtn from "./components/newTodoBtn";
+import createNewTodoBtn from "./components/newTodoBtn";
 
 function loadProject(currentUser, project) {
     const main = document.querySelector("main");
@@ -24,8 +24,8 @@ function loadProject(currentUser, project) {
     const todosOfProject = createListOfTodos(project);
     main.appendChild(todosOfProject);
 
-    const addTodoBtn = createAddNewTodoBtn(project);
-    main.appendChild(addTodoBtn);
+    const newTodoBtn = createNewTodoBtn(project);
+    main.appendChild(newTodoBtn);
 }
 
 export default loadProject;
