@@ -1,5 +1,5 @@
 import createNewProjectDialog from "./components/newProjectDialog";
-import loadProject from "./loadProject";
+import { loadProject } from "./loadProject";
 
 function initializePage(currentUser) {
     handleNewProject(currentUser);

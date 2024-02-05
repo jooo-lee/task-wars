@@ -1,5 +1,5 @@
 import Project from "../../project";
-import loadProject from "../loadProject";
+import { loadProject } from "../loadProject";
 import { closeDialog } from "./dialog";
 import createProjectListItem from "./projectListItem";
 

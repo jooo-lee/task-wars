@@ -1,11 +1,11 @@
-import loadProject from "../loadProject";
+import { loadProject, currentProject } from "../loadProject";
 
 function createDeleteProjectBtn(currentUser, project) {
     const deleteProjectBtn = document.createElement("button");
     deleteProjectBtn.textContent = "Delete project";
     deleteProjectBtn.addEventListener("click", function () {
         // If project we're deleting is being displayed, load inbox into DOM
-        if (currentUser.currentProject == project) {
+        if (currentProject == project) {
             loadProject(currentUser, currentUser.getInbox());
         }
 

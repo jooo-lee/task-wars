@@ -1,19 +1,20 @@
 import createListOfTodos from "./components/listOfTodos";
 import createNewTodoBtn from "./components/newTodoBtn";
 
+let currentProject;
+
 function loadProject(currentUser, project) {
     const main = document.querySelector("main");
 
-    // main.hasChildNodes() handles edge case where
-    // currentUser.currentProject == inbox and project == inbox,
-    // but inbox hasn't been loaded into the DOM yet
-    if (project == currentUser.currentProject && main.hasChildNodes()) {
-        // Don't reload children in <main> if project is already displayed
+    if (!currentProject) {
+        // No project has been loaded yet, load inbox
+        currentProject = currentUser.getInbox();
+    } else if (currentProject == project) {
+        // Desired project is already loaded, do not load again
         return;
-    }
-
-    if (project != currentUser.currentProject) {
-        currentUser.currentProject = project;
+    } else {
+        // Clear <main> and load new project
+        currentProject = project;
         main.replaceChildren();
     }
 
@@ -28,4 +29,4 @@ function loadProject(currentUser, project) {
     main.appendChild(newTodoBtn);
 }
 
-export default loadProject;
+export { loadProject, currentProject };

@@ -2,12 +2,11 @@ import Project from "./project";
 
 class User {
     #projects;
-    #inbox;
+    #inbox; // Default project that all users have, do not delete!
 
     constructor() {
         this.#inbox = new Project("Inbox");
         this.#projects = [this.#inbox];
-        this.currentProject = this.#inbox;
     }
 
     getInbox() {
