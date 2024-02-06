@@ -9,7 +9,7 @@ class Project {
 
     addTodo(todo) {
         this.todos.push(todo);
-        this.#updateThisProjectInLocalStorage();
+        this.updateInLocalStorage();
     }
 
     deleteTodo(targetTodo) {
@@ -22,10 +22,10 @@ class Project {
             this.todos.splice(indexOfTodoToBeDeleted, 1);
         }
 
-        this.#updateThisProjectInLocalStorage();
+        this.updateInLocalStorage();
     }
 
-    #updateThisProjectInLocalStorage() {
+    updateInLocalStorage() {
         if (localStorage.getItem(this.uuid)) {
             localStorage.setItem(this.uuid, JSON.stringify(this));
         } else {

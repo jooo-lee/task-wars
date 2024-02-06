@@ -12,6 +12,7 @@ function createTodoListItem(todo, project) {
     checkBox.name = todo.title;
     checkBox.addEventListener("click", function () {
         todo.complete = this.checked;
+        project.updateInLocalStorage();
     });
     checkBox.checked = todo.complete;
     li.appendChild(checkBox);

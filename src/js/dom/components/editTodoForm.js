@@ -12,6 +12,8 @@ function editTodo(todo, project) {
     todo.dueDate = editTodoForm.elements["due-date"].value;
     todo.priority = editTodoForm.elements["priority"].value;
 
+    project.updateInLocalStorage();
+
     // Replace old todo list item with new one in DOM
     const editedTodoIndex = project.todos.indexOf(todo);
     const oldTodoListItem =
