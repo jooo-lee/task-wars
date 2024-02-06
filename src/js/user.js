@@ -23,10 +23,10 @@ class User {
             Object.keys(localStorage).forEach((key) => {
                 if (key != "inbox") {
                     const parsedProject = JSON.parse(localStorage.getItem(key));
-                    const project = new Project(parsedProject.title);
-                    project.uuid = parsedProject.uuid;
-                    project.todos = parsedProject.todos;
-                    this.#projects.push(project);
+                    const projectWithMethods = new Project(parsedProject.title);
+                    projectWithMethods.uuid = parsedProject.uuid;
+                    projectWithMethods.todos = parsedProject.todos;
+                    this.#projects.push(projectWithMethods);
                 }
             });
         }
