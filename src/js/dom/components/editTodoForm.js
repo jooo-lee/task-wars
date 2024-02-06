@@ -13,7 +13,7 @@ function editTodo(todo, project) {
     todo.priority = editTodoForm.elements["priority"].value;
 
     // Replace old todo list item with new one in DOM
-    const editedTodoIndex = project.getTodos().indexOf(todo);
+    const editedTodoIndex = project.todos.indexOf(todo);
     const oldTodoListItem =
         document.querySelector("#list-of-todos").children[editedTodoIndex];
     const newTodoListItem = createTodoListItem(todo, project);

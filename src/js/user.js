@@ -5,20 +5,40 @@ class User {
     #inbox; // Default project that all users have, do not delete!
 
     constructor() {
-        this.#inbox = new Project("Inbox");
-        this.#projects = [this.#inbox];
+        if (localStorage.length == 0) {
+            this.#inbox = new Project("Inbox");
+            localStorage.setItem("inbox", JSON.stringify(this.#inbox));
+            this.#projects = [this.#inbox];
+        } else {
+            const parsedInbox = JSON.parse(localStorage.getItem("inbox"));
+            // Create new Project object to add back object methods
+            // since we cannot stores functions in JSON
+            this.#inbox = new Project("Inbox");
+            this.#inbox.uuid = parsedInbox.uuid;
+            this.#inbox.title = parsedInbox.title;
+            this.#inbox.todos = parsedInbox.todos;
+            this.#projects = [this.#inbox];
+
+            // Retrieve stored projects excluding inbox
+            Object.keys(localStorage).forEach((key) => {
+                if (key != "inbox") {
+                    const parsedProject = JSON.parse(localStorage.getItem(key));
+                    const project = new Project(parsedProject.title);
+                    project.uuid = parsedProject.uuid;
+                    project.todos = parsedProject.todos;
+                    this.#projects.push(project);
+                }
+            });
+        }
     }
 
     getInbox() {
         return this.#inbox;
     }
 
-    getProjects() {
-        return this.#projects;
-    }
-
     addProject(project) {
         this.#projects.push(project);
+        localStorage.setItem(`${project.uuid}`, JSON.stringify(project));
     }
 
     deleteProject(targetProject) {
@@ -31,6 +51,8 @@ class User {
         if (indexOfProjectToBeDeleted > -1) {
             this.#projects.splice(indexOfProjectToBeDeleted, 1);
         }
+
+        localStorage.removeItem(`${targetProject.uuid}`);
     }
 }
 
