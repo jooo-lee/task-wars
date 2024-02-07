@@ -1,3 +1,4 @@
+import "../styles.css";
 import { initializePage } from "./dom/dom";
 import User from "./user";
 
