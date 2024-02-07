@@ -36,6 +36,10 @@ class User {
         return this.#inbox;
     }
 
+    getProjects() {
+        return this.#projects;
+    }
+
     addProject(project) {
         this.#projects.push(project);
         localStorage.setItem(`${project.uuid}`, JSON.stringify(project));
