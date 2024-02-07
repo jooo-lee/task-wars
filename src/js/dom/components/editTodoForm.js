@@ -3,7 +3,7 @@ import { closeModal } from "./modal";
 import createTodoForm from "./todoForm";
 
 // Callback for handling edit todo form submission behaviour
-function editTodo(todo, project) {
+function editTodo(currentUser, todo, project) {
     const editTodoForm = document.querySelector("#edit-todo-form");
 
     // Update todo object properties
@@ -12,20 +12,20 @@ function editTodo(todo, project) {
     todo.dueDate = editTodoForm.elements["due-date"].value;
     todo.priority = editTodoForm.elements["priority"].value;
 
-    project.updateInLocalStorage();
+    currentUser.updateLocalStorage();
 
     // Replace old todo list item with new one in DOM
     const editedTodoIndex = project.todos.indexOf(todo);
     const oldTodoListItem =
         document.querySelector("#list-of-todos").children[editedTodoIndex];
-    const newTodoListItem = createTodoListItem(todo, project);
+    const newTodoListItem = createTodoListItem(currentUser, todo, project);
     oldTodoListItem.replaceWith(newTodoListItem);
 
     const editTodoModal = document.querySelector("#edit-todo-modal");
     closeModal(editTodoModal);
 }
 
-function createEditTodoForm(todo, project) {
+function createEditTodoForm(currentUser, todo, project) {
     const editTodoForm = createTodoForm();
     editTodoForm.id = "edit-todo-form";
 
@@ -44,7 +44,7 @@ function createEditTodoForm(todo, project) {
             if (e.key == "Enter") {
                 e.preventDefault();
                 editTodoForm.checkValidity()
-                    ? editTodo(todo, project)
+                    ? editTodo(currentUser, todo, project)
                     : editTodoForm.reportValidity();
             }
         });
@@ -53,7 +53,7 @@ function createEditTodoForm(todo, project) {
     // Handle edit todo form submission
     editTodoForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        editTodo(todo, project);
+        editTodo(currentUser, todo, project);
     });
 
     return editTodoForm;

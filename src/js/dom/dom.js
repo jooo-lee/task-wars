@@ -30,9 +30,7 @@ function handleNewProject(currentUser) {
 function loadSavedProjects(currentUser) {
     const projectList = document.querySelector("#project-list");
 
-    currentUser.getProjects().forEach((project) => {
-        const inboxUuid = JSON.parse(localStorage.getItem("inbox")).uuid;
-        if (project.uuid == inboxUuid) return;
+    currentUser.getNonInboxProjects().forEach((project) => {
         const projectListItem = createProjectListItem(currentUser, project);
         projectList.appendChild(projectListItem);
     });

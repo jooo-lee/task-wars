@@ -22,10 +22,10 @@ function loadProject(currentUser, project) {
     tabTitle.textContent = project.title;
     main.appendChild(tabTitle);
 
-    const todosOfProject = createListOfTodos(project);
+    const todosOfProject = createListOfTodos(currentUser, project);
     main.appendChild(todosOfProject);
 
-    const newTodoBtn = createNewTodoBtn(project);
+    const newTodoBtn = createNewTodoBtn(currentUser, project);
     main.appendChild(newTodoBtn);
 }
 

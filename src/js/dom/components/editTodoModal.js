@@ -1,7 +1,7 @@
 import { createModal } from "./modal";
 import createEditTodoForm from "./editTodoForm";
 
-function createEditTodoModal(todo, project) {
+function createEditTodoModal(currentUser, todo, project) {
     const editTodoModal = createModal();
     editTodoModal.id = "edit-todo-modal";
 
@@ -9,7 +9,7 @@ function createEditTodoModal(todo, project) {
     p.textContent = "Edit Todo";
     editTodoModal.appendChild(p);
 
-    const editTodoForm = createEditTodoForm(todo, project);
+    const editTodoForm = createEditTodoForm(currentUser, todo, project);
     editTodoModal.appendChild(editTodoForm);
 
     return editTodoModal;

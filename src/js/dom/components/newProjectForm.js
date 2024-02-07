@@ -6,6 +6,7 @@ import createProjectListItem from "./projectListItem";
 function addNewProject(currentUser, projectTitle) {
     const newProject = new Project(projectTitle);
     currentUser.addProject(newProject);
+    currentUser.updateLocalStorage();
 
     const projectList = document.querySelector("#project-list");
     const projectListItem = createProjectListItem(currentUser, newProject);

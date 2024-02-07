@@ -9,7 +9,6 @@ class Project {
 
     addTodo(todo) {
         this.todos.push(todo);
-        this.updateInLocalStorage();
     }
 
     deleteTodo(targetTodo) {
@@ -20,19 +19,6 @@ class Project {
 
         if (indexOfTodoToBeDeleted > -1) {
             this.todos.splice(indexOfTodoToBeDeleted, 1);
-        }
-
-        this.updateInLocalStorage();
-    }
-
-    updateInLocalStorage() {
-        if (localStorage.getItem(this.uuid)) {
-            localStorage.setItem(this.uuid, JSON.stringify(this));
-        } else {
-            const inboxUuid = JSON.parse(localStorage.getItem("inbox")).uuid;
-            if (this.uuid == inboxUuid) {
-                localStorage.setItem("inbox", JSON.stringify(this));
-            }
         }
     }
 }

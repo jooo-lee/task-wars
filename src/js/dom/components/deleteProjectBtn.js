@@ -10,6 +10,7 @@ function createDeleteProjectBtn(currentUser, project) {
         }
 
         currentUser.deleteProject(project);
+        currentUser.updateLocalStorage();
         this.parentElement.remove();
     });
     return deleteProjectBtn;

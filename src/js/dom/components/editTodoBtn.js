@@ -1,11 +1,11 @@
 import createEditTodoModal from "./editTodoModal";
 
-function createEditTodoBtn(todo, project) {
+function createEditTodoBtn(currentUser, todo, project) {
     const editTodoBtn = document.createElement("button");
     editTodoBtn.textContent = "Edit todo";
 
     editTodoBtn.addEventListener("click", () => {
-        const editTodoModal = createEditTodoModal(todo, project);
+        const editTodoModal = createEditTodoModal(currentUser, todo, project);
 
         const body = document.querySelector("body");
         body.appendChild(editTodoModal);

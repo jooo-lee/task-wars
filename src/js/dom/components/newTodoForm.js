@@ -4,7 +4,7 @@ import { closeModal } from "./modal";
 import createTodoForm from "./todoForm";
 
 // Callback for handling new todo form submission
-function addNewTodo(project) {
+function addNewTodo(currentUser, project) {
     const newTodoForm = document.querySelector("#new-todo-form");
 
     const newTodo = new Todo(
@@ -15,8 +15,9 @@ function addNewTodo(project) {
     );
 
     project.addTodo(newTodo);
+    currentUser.updateLocalStorage();
 
-    const todoListItem = createTodoListItem(newTodo, project);
+    const todoListItem = createTodoListItem(currentUser, newTodo, project);
     const listOfTodos = document.querySelector("#list-of-todos");
     listOfTodos.appendChild(todoListItem);
 
@@ -24,7 +25,7 @@ function addNewTodo(project) {
     closeModal(newTodoModal);
 }
 
-function createNewTodoForm(project) {
+function createNewTodoForm(currentUser, project) {
     const newTodoForm = createTodoForm();
     newTodoForm.id = "new-todo-form";
 
@@ -37,7 +38,7 @@ function createNewTodoForm(project) {
             if (e.key == "Enter") {
                 e.preventDefault();
                 newTodoForm.checkValidity()
-                    ? addNewTodo(project)
+                    ? addNewTodo(currentUser, project)
                     : newTodoForm.reportValidity();
             }
         });
@@ -45,7 +46,7 @@ function createNewTodoForm(project) {
 
     newTodoForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        addNewTodo(project);
+        addNewTodo(currentUser, project);
     });
 
     return newTodoForm;

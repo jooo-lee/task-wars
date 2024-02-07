@@ -3,7 +3,7 @@ import createDeleteTodoBtn from "./deleteTodoBtn";
 import createEditTodoBtn from "./editTodoBtn";
 
 // Here, list item refers to the <li> tag
-function createTodoListItem(todo, project) {
+function createTodoListItem(currentUser, todo, project) {
     const li = document.createElement("li");
 
     const checkBox = document.createElement("input");
@@ -12,7 +12,7 @@ function createTodoListItem(todo, project) {
     checkBox.name = todo.title;
     checkBox.addEventListener("click", function () {
         todo.complete = this.checked;
-        project.updateInLocalStorage();
+        currentUser.updateLocalStorage();
     });
     checkBox.checked = todo.complete;
     li.appendChild(checkBox);
@@ -29,10 +29,10 @@ function createTodoListItem(todo, project) {
     const todoDetailsBtn = createTodoDetailsBtn(todo);
     li.appendChild(todoDetailsBtn);
 
-    const editTodoBtn = createEditTodoBtn(todo, project);
+    const editTodoBtn = createEditTodoBtn(currentUser, todo, project);
     li.appendChild(editTodoBtn);
 
-    const deleteTodoBtn = createDeleteTodoBtn(todo, project);
+    const deleteTodoBtn = createDeleteTodoBtn(currentUser, todo, project);
     li.appendChild(deleteTodoBtn);
 
     return li;
