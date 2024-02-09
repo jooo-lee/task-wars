@@ -3,10 +3,14 @@ import createDeleteProjectBtn from "./deleteProjectBtn";
 
 function createProjectListItem(currentUser, project) {
     const projectListItem = document.createElement("li");
+    projectListItem.classList.add("project-list-item");
 
     const projectLink = document.createElement("a");
     projectLink.href = "#";
-    projectLink.textContent = project.title;
+    projectLink.classList.add("project");
+    const projectTitle = document.createElement("p");
+    projectTitle.textContent = project.title;
+    projectLink.appendChild(projectTitle);
     projectLink.addEventListener("click", () => {
         loadProject(currentUser, project);
     });

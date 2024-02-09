@@ -39,4 +39,9 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         clean: true,
     },
+    resolve: {
+        alias: {
+            assets: path.resolve(__dirname, "src/assets"),
+        },
+    },
 };

@@ -20,7 +20,7 @@
 }
 
 .container > * {
-    padding: 1rem;
+    padding: 16px;
 }
 
 .container > .header {
@@ -33,31 +33,121 @@
     grid-area: main-content;
 }
 
-.container > .left-sidebar {
-    grid-area: left-sidebar;
-}
-
 .container a {
     color: var(--secondary-color);
 }
 
-/* Tablet breakpoint */
-@media screen and (min-width: 768px) {
-    .container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "header header"
-            "left-sidebar left-sidebar"
-            "main-content main-content";
+button {
+    width: fit-content;
+    padding: 6px;
+}
+
+/* ------------------------ Left Sidebar ------------------------ */
+
+.container > .left-sidebar {
+    grid-area: left-sidebar;
+}
+
+#inbox {
+    padding: 4px 0;
+    width: fit-content;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+#inbox-img {
+    width: 20px;
+}
+
+.left-sidebar > nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-list-item {
+    list-style: none;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.project p {
+    text-indent: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.delete-project-btn {
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+
+.trash-can-img {
+    width: 20px;
+}
+
+#new-project-btn {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+/* ------------------------ Hover Effects ------------------------ */
+
+@media (hover: hover) {
+    button:hover {
+        cursor: pointer;
+    }
+
+    .project-list-item:hover {
+        background-color: #e2e2e2;
+    }
+
+    #new-project-btn:hover {
+        background-color: var(--accent-color);
+        color: var(--main-color);
+        border-color: var(--accent-color);
     }
 }
 
-/* Desktop breakpoint */
-@media screen and (min-width: 1024px) {
+/* ------------------------ Viewport Breakpoints ------------------------ */
+
+@media screen and (min-width: 480px) {
     .container {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: auto repeat(3, 1fr);
         grid-template-areas:
             "header header header header"
             "left-sidebar main-content main-content main-content";
+    }
+
+    .project-list-item {
+        width: fit-content;
     }
 }
