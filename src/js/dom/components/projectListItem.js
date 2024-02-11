@@ -8,9 +8,7 @@ function createProjectListItem(currentUser, project) {
     const projectLink = document.createElement("a");
     projectLink.href = "#";
     projectLink.classList.add("project");
-    const projectTitle = document.createElement("p");
-    projectTitle.textContent = project.title;
-    projectLink.appendChild(projectTitle);
+    projectLink.textContent = project.title;
     projectLink.addEventListener("click", () => {
         loadProject(currentUser, project);
     });

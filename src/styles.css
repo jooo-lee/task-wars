@@ -13,6 +13,7 @@
 
 .container {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
         "header"
         "left-sidebar"
@@ -81,37 +82,35 @@ button {
 
 .project-list-item {
     list-style: none;
-    padding: 4px;
-    border-radius: 4px;
     display: flex;
-    justify-content: space-between;
+    gap: 8px;
     align-items: stretch;
 }
 
 .project {
-    display: flex;
-    align-items: center;
-    width: 200px;
+    border-radius: 4px;
+    padding: 12px;
+    flex: 1;
     text-decoration: none;
     background-color: transparent;
-}
-
-.project p {
-    text-indent: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .delete-project-btn {
-    padding: 4px;
+    border: 1px solid black;
+    margin: 4px;
     display: flex;
     align-items: center;
     background-color: transparent;
-    border: none;
 }
 
 .trash-can-img {
     width: 20px;
+}
+
+#new-project-btn {
+    align-self: center;
 }
 
 #new-project-btn,
@@ -121,10 +120,11 @@ button {
 }
 
 #new-project-dialog {
+    align-self: center;
     position: relative;
     border: 1px solid var(--secondary-color);
     border-radius: 4px;
-    padding: 8px;
+    padding: 12px;
 }
 
 #new-project-form {
@@ -133,13 +133,15 @@ button {
 }
 
 #new-project-title {
-    padding: 4px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    padding: 4px 8px;
 }
 
 #new-project-form-btns {
-    margin-top: 8px;
+    margin-top: 12px;
     display: flex;
-    gap: 8px;
+    gap: 12px;
     justify-content: center;
 }
 
@@ -149,6 +151,10 @@ button {
     color: var(--main-color);
 }
 
+#author {
+    align-self: center;
+}
+
 /* ------------------------ Hover Effects ------------------------ */
 
 @media (hover: hover) {
@@ -156,7 +162,8 @@ button {
         cursor: pointer;
     }
 
-    .project-list-item:hover {
+    .project:hover,
+    .delete-project-btn:hover {
         background-color: #e2e2e2;
     }
 
@@ -174,13 +181,9 @@ button {
 
 @media screen and (min-width: 480px) {
     .container {
-        grid-template-columns: auto repeat(3, 1fr);
+        grid-template-columns: minmax(250px, 300px) 1fr;
         grid-template-areas:
-            "header header header header"
-            "left-sidebar main-content main-content main-content";
-    }
-
-    .project-list-item {
-        width: fit-content;
+            "header header"
+            "left-sidebar main-content";
     }
 }
