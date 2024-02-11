@@ -34,6 +34,9 @@ function createNewProjectForm(currentUser) {
     title.placeholder = "Help Boba Fett";
     newProjectForm.appendChild(title);
 
+    const btnsContainer = document.createElement("div");
+    btnsContainer.id = "new-project-form-btns";
+
     const cancelBtn = document.createElement("button");
     cancelBtn.textContent = "Cancel";
     cancelBtn.value = "cancel";
@@ -43,12 +46,14 @@ function createNewProjectForm(currentUser) {
         const newProjectDialog = document.querySelector("#new-project-dialog");
         closeDialog(newProjectDialog);
     });
-    newProjectForm.appendChild(cancelBtn);
+    btnsContainer.appendChild(cancelBtn);
 
     const submitBtn = document.createElement("button");
     submitBtn.textContent = "Submit";
     submitBtn.value = "submit";
-    newProjectForm.appendChild(submitBtn);
+    btnsContainer.appendChild(submitBtn);
+
+    newProjectForm.appendChild(btnsContainer);
 
     newProjectForm.addEventListener("submit", (e) => {
         e.preventDefault();
