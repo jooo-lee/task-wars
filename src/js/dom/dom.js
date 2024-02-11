@@ -20,9 +20,15 @@ function createInbox(currentUser) {
 function handleNewProject(currentUser) {
     const newProjectBtn = document.querySelector("#new-project-btn");
     newProjectBtn.addEventListener("click", () => {
-        const newProjectDialog = createNewProjectDialog(currentUser);
-        newProjectBtn.after(newProjectDialog);
-        newProjectDialog.show();
+        if (
+            !document.body.contains(
+                document.querySelector("#new-project-dialog")
+            )
+        ) {
+            const newProjectDialog = createNewProjectDialog(currentUser);
+            newProjectBtn.after(newProjectDialog);
+            newProjectDialog.show();
+        }
     });
 }
 
