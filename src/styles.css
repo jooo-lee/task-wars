@@ -16,8 +16,8 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
         "header"
-        "left-sidebar"
-        "main-content";
+        "main-content"
+        "left-sidebar";
 }
 
 .container > * {
