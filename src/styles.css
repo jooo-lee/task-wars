@@ -30,18 +30,16 @@
     color: var(--main-color);
 }
 
-.container > .main-content {
-    grid-area: main-content;
-}
-
 .container a {
     color: var(--secondary-color);
 }
 
 button {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
     width: fit-content;
     padding: 6px;
-    border-radius: 4px;
 }
 
 /* ------------------------ Left Sidebar ------------------------ */
@@ -113,12 +111,6 @@ button {
     align-self: center;
 }
 
-#new-project-btn,
-#new-project-form-btns > button[value="cancel"] {
-    background-color: transparent;
-    border: 1px solid var(--secondary-color);
-}
-
 #new-project-dialog {
     align-self: center;
     position: relative;
@@ -145,7 +137,7 @@ button {
     justify-content: center;
 }
 
-#new-project-form-btns > button[value="submit"] {
+button[value="submit"] {
     background-color: var(--accent-color);
     border: 1px solid var(--accent-color);
     color: var(--main-color);
@@ -155,31 +147,90 @@ button {
     align-self: center;
 }
 
+/* ------------------------ Main Content ------------------------ */
+
+.container > .main-content {
+    grid-area: main-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#current-project-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#list-of-todos {
+    list-style-type: none;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.todo-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid black;
+}
+
+.todo-list-item-first-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+}
+
+.todo-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: auto;
+}
+
+.todo-due-date {
+    white-space: nowrap;
+}
+
+.todo-btns-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+#new-todo-btn {
+    align-self: center;
+}
+
+.main-content button {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+}
+
 /* ------------------------ Hover Effects ------------------------ */
 
 @media (hover: hover) {
-    button:hover {
+    button:hover,
+    .todo-checkbox:hover {
         cursor: pointer;
     }
 
     .project:hover,
-    .delete-project-btn:hover {
+    button:hover {
         background-color: #e2e2e2;
     }
 
-    #new-project-btn:hover,
-    #new-project-form-btns > button[value="cancel"]:hover {
-        background-color: #e2e2e2;
-    }
-
-    #new-project-form-btns > button[value="submit"]:hover {
-        filter: brightness(90%);
+    button[value="submit"]:hover {
+        background-color: var(--accent-color);
+        filter: brightness(150%);
     }
 }
 
 /* ------------------------ Viewport Breakpoints ------------------------ */
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
     .container {
         grid-template-columns: minmax(250px, 300px) 1fr;
         grid-template-areas:

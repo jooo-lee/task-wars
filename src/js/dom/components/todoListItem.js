@@ -5,9 +5,14 @@ import createEditTodoBtn from "./editTodoBtn";
 // Here, list item refers to the <li> tag
 function createTodoListItem(currentUser, todo, project) {
     const li = document.createElement("li");
+    li.classList.add("todo-list-item");
+
+    const todoListItemFirstRow = document.createElement("div");
+    todoListItemFirstRow.classList.add("todo-list-item-first-row");
 
     const checkBox = document.createElement("input");
     checkBox.id = todo.title;
+    checkBox.classList.add("todo-checkbox");
     checkBox.type = "checkbox";
     checkBox.name = todo.title;
     checkBox.addEventListener("click", function () {
@@ -15,25 +20,34 @@ function createTodoListItem(currentUser, todo, project) {
         currentUser.updateLocalStorage();
     });
     checkBox.checked = todo.complete;
-    li.appendChild(checkBox);
+    todoListItemFirstRow.appendChild(checkBox);
 
     const todoTitle = document.createElement("label");
+    todoTitle.classList.add("todo-title");
     todoTitle.setAttribute("for", todo.title);
     todoTitle.textContent = todo.title;
-    li.appendChild(todoTitle);
+    todoListItemFirstRow.appendChild(todoTitle);
 
     const todoDueDate = document.createElement("p");
+    todoDueDate.classList.add("todo-due-date");
     todoDueDate.textContent = todo.dueDate;
-    li.appendChild(todoDueDate);
+    todoListItemFirstRow.appendChild(todoDueDate);
+
+    li.appendChild(todoListItemFirstRow);
+
+    const todoBtnsContainer = document.createElement("div");
+    todoBtnsContainer.classList.add("todo-btns-container");
 
     const todoDetailsBtn = createTodoDetailsBtn(todo);
-    li.appendChild(todoDetailsBtn);
+    todoBtnsContainer.appendChild(todoDetailsBtn);
 
     const editTodoBtn = createEditTodoBtn(currentUser, todo, project);
-    li.appendChild(editTodoBtn);
+    todoBtnsContainer.appendChild(editTodoBtn);
 
     const deleteTodoBtn = createDeleteTodoBtn(currentUser, todo, project);
-    li.appendChild(deleteTodoBtn);
+    todoBtnsContainer.appendChild(deleteTodoBtn);
+
+    li.appendChild(todoBtnsContainer);
 
     return li;
 }

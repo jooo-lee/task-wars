@@ -18,9 +18,10 @@ function loadProject(currentUser, project) {
         main.replaceChildren();
     }
 
-    const tabTitle = document.createElement("h2");
-    tabTitle.textContent = project.title;
-    main.appendChild(tabTitle);
+    const currentProjectTitle = document.createElement("h2");
+    currentProjectTitle.id = "current-project-title";
+    currentProjectTitle.textContent = project.title;
+    main.appendChild(currentProjectTitle);
 
     const todosOfProject = createListOfTodos(currentUser, project);
     main.appendChild(todosOfProject);

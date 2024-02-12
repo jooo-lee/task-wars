@@ -2,7 +2,8 @@ import createNewTodoModal from "./newTodoModal";
 
 function createNewTodoBtn(currentUser, project) {
     const newTodoBtn = document.createElement("button");
-    newTodoBtn.textContent = "New todo";
+    newTodoBtn.id = "new-todo-btn";
+    newTodoBtn.textContent = "+ New todo";
 
     newTodoBtn.addEventListener("click", () => {
         const newTodoModal = createNewTodoModal(currentUser, project);
