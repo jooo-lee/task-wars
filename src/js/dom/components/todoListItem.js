@@ -30,7 +30,7 @@ function createTodoListItem(currentUser, todo, project) {
 
     const todoDueDate = document.createElement("p");
     todoDueDate.classList.add("todo-due-date");
-    todoDueDate.textContent = todo.dueDate;
+    todoDueDate.textContent = `Due: ${todo.dueDate}`;
     todoListItemFirstRow.appendChild(todoDueDate);
 
     li.appendChild(todoListItemFirstRow);

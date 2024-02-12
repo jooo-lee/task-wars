@@ -2,7 +2,7 @@ import createTodoDetailsModal from "./todoDetailsModal";
 
 function createTodoDetailsBtn(todo) {
     const todoDetailsBtn = document.createElement("button");
-    todoDetailsBtn.textContent = "View details";
+    todoDetailsBtn.textContent = "Details";
     todoDetailsBtn.addEventListener("click", function () {
         const todoDetailsModal = createTodoDetailsModal(todo);
 

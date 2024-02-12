@@ -35,6 +35,7 @@
 }
 
 button {
+    font-size: 1rem;
     background-color: transparent;
     border: 1px solid var(--secondary-color);
     border-radius: 4px;
@@ -96,11 +97,11 @@ button {
 }
 
 .delete-project-btn {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 4px;
     display: flex;
     align-items: center;
-    background-color: transparent;
+    /* background-color: transparent; */
 }
 
 .trash-can-img {
@@ -153,7 +154,12 @@ button[value="submit"] {
     grid-area: main-content;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
+}
+
+.main-content button {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
 }
 
 #current-project-title {
@@ -173,7 +179,7 @@ button[value="submit"] {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding-bottom: 8px;
+    padding-bottom: 12px;
     border-bottom: 1px solid black;
 }
 
@@ -192,6 +198,7 @@ button[value="submit"] {
 
 .todo-due-date {
     white-space: nowrap;
+    margin-left: 8px;
 }
 
 .todo-btns-container {
@@ -200,13 +207,22 @@ button[value="submit"] {
     gap: 12px;
 }
 
-#new-todo-btn {
-    align-self: center;
+.edit-todo-btn {
+    display: flex;
+    align-items: center;
 }
 
-.main-content button {
-    background-color: transparent;
-    border: 1px solid var(--secondary-color);
+.square-edit-img {
+    width: 20px;
+}
+
+.delete-todo-btn {
+    display: flex;
+    align-items: center;
+}
+
+#new-todo-btn {
+    align-self: center;
 }
 
 /* ------------------------ Hover Effects ------------------------ */

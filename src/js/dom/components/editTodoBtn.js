@@ -1,8 +1,15 @@
 import createEditTodoModal from "./editTodoModal";
+import squareEditImg from "assets/square-edit.svg";
 
 function createEditTodoBtn(currentUser, todo, project) {
     const editTodoBtn = document.createElement("button");
-    editTodoBtn.textContent = "Edit todo";
+    editTodoBtn.classList.add("edit-todo-btn");
+
+    const squareEdit = new Image();
+    squareEdit.src = squareEditImg;
+    squareEdit.classList.add("square-edit-img");
+    squareEdit.alt = "Edit todo";
+    editTodoBtn.appendChild(squareEdit);
 
     editTodoBtn.addEventListener("click", () => {
         const editTodoModal = createEditTodoModal(currentUser, todo, project);
