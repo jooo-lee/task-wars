@@ -13,7 +13,7 @@ function createDeleteTodoBtn(currentUser, todo, project) {
     deleteTodoBtn.addEventListener("click", function () {
         project.deleteTodo(todo);
         currentUser.updateLocalStorage();
-        this.parentElement.remove();
+        this.parentElement.parentElement.remove();
     });
     return deleteTodoBtn;
 }

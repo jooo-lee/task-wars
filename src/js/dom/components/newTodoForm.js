@@ -8,10 +8,10 @@ function addNewTodo(currentUser, project) {
     const newTodoForm = document.querySelector("#new-todo-form");
 
     const newTodo = new Todo(
-        newTodoForm.elements["title"].value,
-        newTodoForm.elements["description"].value,
-        newTodoForm.elements["due-date"].value,
-        newTodoForm.elements["priority"].value
+        newTodoForm.elements["todo-title"].value,
+        newTodoForm.elements["todo-description"].value,
+        newTodoForm.elements["todo-due-date"].value,
+        newTodoForm.elements["todo-priority"].value
     );
 
     project.addTodo(newTodo);
@@ -30,11 +30,13 @@ function createNewTodoForm(currentUser, project) {
     newTodoForm.id = "new-todo-form";
 
     // Handle "enter" key press when focused on certain fields in new todo form
-    const submitOnEnterElements = [...newTodoForm.children].filter(
-        (child) => child.tagName == "INPUT" || child.tagName == "SELECT"
+    // Note: HTMLFormElement: elements property won't return our form rows as they are divs
+    // More here: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
+    const submitOnEnterElements = Array.from(newTodoForm.elements).filter(
+        (element) => element.tagName == "INPUT" || element.tagName == "SELECT"
     );
-    submitOnEnterElements.forEach((elem) => {
-        elem.addEventListener("keydown", (e) => {
+    submitOnEnterElements.forEach((element) => {
+        element.addEventListener("keydown", (e) => {
             if (e.key == "Enter") {
                 e.preventDefault();
                 newTodoForm.checkValidity()
@@ -42,6 +44,19 @@ function createNewTodoForm(currentUser, project) {
                     : newTodoForm.reportValidity();
             }
         });
+    });
+
+    // Make sure pressing enter or space while focused on submit button submits the form
+    const submitBtn = Array.from(newTodoForm.elements).find(
+        (element) => element.type == "submit"
+    );
+    submitBtn.addEventListener("keydown", (e) => {
+        if (e.key == "Enter" || e.key == " ") {
+            e.preventDefault();
+            newTodoForm.checkValidity()
+                ? addNewTodo(currentUser, project)
+                : newTodoForm.reportValidity();
+        }
     });
 
     newTodoForm.addEventListener("submit", (e) => {

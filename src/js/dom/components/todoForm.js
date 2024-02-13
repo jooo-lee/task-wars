@@ -1,57 +1,80 @@
+import { format } from "date-fns";
+
 /* 
 Returns a form with fields for the user to enter todo details.
 Form submission behaviour, including the "enter" key being pressed, should be handled
 in the modules that depend on this one.
 */
 
+function createFormRow() {
+    const formRow = document.createElement("div");
+    formRow.classList.add("form-row");
+    return formRow;
+}
+
 function createTodoForm() {
     const todoForm = document.createElement("form");
 
+    const titleFormRow = createFormRow();
+
     const titleLabel = document.createElement("label");
     titleLabel.textContent = "Title: ";
-    titleLabel.setAttribute("for", "title");
-    todoForm.appendChild(titleLabel);
+    titleLabel.setAttribute("for", "todo-title");
+    titleFormRow.appendChild(titleLabel);
 
     const title = document.createElement("input");
-    title.id = "title";
+    title.id = "todo-title";
     title.type = "text";
-    title.name = "title";
+    title.name = "todo-title";
     title.required = true;
     title.placeholder = "Reclaim Mandalore";
-    todoForm.appendChild(title);
+    titleFormRow.appendChild(title);
+
+    todoForm.appendChild(titleFormRow);
+
+    const descriptionFormRow = createFormRow();
 
     const descriptionLabel = document.createElement("label");
     descriptionLabel.textContent = "Description: ";
-    descriptionLabel.setAttribute("for", "description");
-    todoForm.appendChild(descriptionLabel);
+    descriptionLabel.setAttribute("for", "todo-description");
+    descriptionFormRow.appendChild(descriptionLabel);
 
     const description = document.createElement("textarea");
-    description.id = "description";
-    description.name = "description";
+    description.id = "todo-description";
+    description.name = "todo-description";
     description.placeholder = "Defeat Moff Gideon and retrieve the darksaber";
-    description.rows = "10";
+    description.rows = "5";
     description.cols = "30";
-    todoForm.appendChild(description);
+    descriptionFormRow.appendChild(description);
+
+    todoForm.appendChild(descriptionFormRow);
+
+    const dueDateFormRow = createFormRow();
 
     const dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "Due Date: ";
-    dueDateLabel.setAttribute("for", "due-date");
-    todoForm.appendChild(dueDateLabel);
+    dueDateLabel.setAttribute("for", "todo-due-date");
+    dueDateFormRow.appendChild(dueDateLabel);
 
     const dueDate = document.createElement("input");
-    dueDate.id = "due-date";
+    dueDate.id = "todo-due-date";
+    dueDate.value = format(new Date(), "yyyy-MM-dd");
     dueDate.type = "date";
-    dueDate.name = "due-date";
-    todoForm.appendChild(dueDate);
+    dueDate.name = "todo-due-date";
+    dueDateFormRow.appendChild(dueDate);
+
+    todoForm.appendChild(dueDateFormRow);
+
+    const priorityFormRow = createFormRow();
 
     const priorityLabel = document.createElement("label");
     priorityLabel.textContent = "Priority: ";
-    priorityLabel.setAttribute("for", "priority");
-    todoForm.appendChild(priorityLabel);
+    priorityLabel.setAttribute("for", "todo-priority");
+    priorityFormRow.appendChild(priorityLabel);
 
     const priority = document.createElement("select");
-    priority.id = "priority";
-    priority.name = "priority";
+    priority.id = "todo-priority";
+    priority.name = "todo-priority";
 
     const lowPriority = document.createElement("option");
     lowPriority.value = "Low";
@@ -68,9 +91,12 @@ function createTodoForm() {
     highPriority.textContent = highPriority.value;
     priority.appendChild(highPriority);
 
-    todoForm.appendChild(priority);
+    priorityFormRow.appendChild(priority);
+    todoForm.appendChild(priorityFormRow);
 
     const submitBtn = document.createElement("button");
+    submitBtn.id = "submit-todo-form-btn";
+    submitBtn.value = "submit";
     submitBtn.type = "submit";
     submitBtn.textContent = "Submit";
     todoForm.appendChild(submitBtn);

@@ -2,12 +2,9 @@ import { createModal } from "./modal";
 import createNewTodoForm from "./newTodoForm";
 
 function createNewTodoModal(currentUser, project) {
-    const newTodoModal = createModal();
+    const newTodoModal = createModal("New Todo");
+    newTodoModal.classList.add("modal");
     newTodoModal.id = "new-todo-modal";
-
-    const p = document.createElement("p");
-    p.textContent = "New Todo";
-    newTodoModal.appendChild(p);
 
     const newTodoForm = createNewTodoForm(currentUser, project);
     newTodoModal.appendChild(newTodoForm);

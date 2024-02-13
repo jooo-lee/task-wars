@@ -1,7 +1,9 @@
 import { createModal } from "./modal";
 
 function createTodoDetailsModal(todo) {
-    const todoDetailsModal = createModal();
+    const todoDetailsModal = createModal("Todo Details");
+    todoDetailsModal.classList.add("modal");
+    todoDetailsModal.id = "todo-details-modal";
 
     const title = document.createElement("p");
     title.textContent = `Title: ${todo.title}`;

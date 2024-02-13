@@ -41,6 +41,7 @@ button {
     border-radius: 4px;
     width: fit-content;
     padding: 6px;
+    color: var(--secondary-color);
 }
 
 /* ------------------------ Left Sidebar ------------------------ */
@@ -97,11 +98,9 @@ button {
 }
 
 .delete-project-btn {
-    /* border: 1px solid black; */
     margin: 4px;
     display: flex;
     align-items: center;
-    /* background-color: transparent; */
 }
 
 .trash-can-img {
@@ -128,7 +127,7 @@ button {
 #new-project-title {
     border: 1px solid var(--secondary-color);
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 8px;
 }
 
 #new-project-form-btns {
@@ -191,6 +190,7 @@ button[value="submit"] {
 }
 
 .todo-title {
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: auto;
@@ -225,6 +225,81 @@ button[value="submit"] {
     align-self: center;
 }
 
+/* ------------------------ Modals ------------------------ */
+
+.modal {
+    margin: auto;
+    padding: 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 80%;
+}
+
+.modal::backdrop {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.close-modal-btn {
+    align-self: flex-end;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* ------------------------ Todo Details Modal ------------------------ */
+
+#todo-details-modal {
+    overflow-wrap: break-word;
+}
+
+/* ------------------------ New/Edit Todo Form ------------------------ */
+
+#edit-todo-form,
+#new-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+form input,
+form textarea,
+form select {
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form textarea,
+#todo-title {
+    padding: 8px;
+    width: 100%;
+}
+
+#todo-due-date,
+#todo-priority {
+    background-color: white;
+    color: black;
+    padding: 4px;
+    width: fit-content;
+}
+
+#submit-todo-form-btn {
+    font-weight: 400;
+    align-self: flex-end;
+}
+
 /* ------------------------ Hover Effects ------------------------ */
 
 @media (hover: hover) {
@@ -252,5 +327,9 @@ button[value="submit"] {
         grid-template-areas:
             "header header"
             "left-sidebar main-content";
+    }
+
+    .modal {
+        width: 50%;
     }
 }
