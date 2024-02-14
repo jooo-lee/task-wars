@@ -96,7 +96,7 @@ button {
 .projects-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
 }
 
 #project-list {
@@ -178,7 +178,7 @@ button[value="submit"] {
     grid-area: main-content;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
 }
 
 .main-content button {
@@ -193,10 +193,8 @@ button[value="submit"] {
 
 #list-of-todos {
     list-style-type: none;
-    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
 }
 
 .todo-list-item {
@@ -204,6 +202,7 @@ button[value="submit"] {
     flex-direction: column;
     gap: 12px;
     padding-bottom: 12px;
+    margin: 0 12px 12px 12px;
     border-bottom: 1px solid black;
 }
 

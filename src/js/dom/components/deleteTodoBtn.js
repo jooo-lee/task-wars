@@ -13,6 +13,13 @@ function createDeleteTodoBtn(currentUser, todo, project) {
     deleteTodoBtn.addEventListener("click", function () {
         project.deleteTodo(todo);
         currentUser.updateLocalStorage();
+
+        // Display quote in list of todos if project contains no more todos
+        if (project.todos.length == 0) {
+            document.querySelector("#list-of-todos-quote").style.display =
+                "initial";
+        }
+
         this.parentElement.parentElement.remove();
     });
     return deleteTodoBtn;

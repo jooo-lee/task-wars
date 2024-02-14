@@ -5,6 +5,9 @@ import createTodoForm from "./todoForm";
 
 // Callback for handling new todo form submission
 function addNewTodo(currentUser, project) {
+    // Hide quote in list of todos (project will have at least one todo)
+    document.querySelector("#list-of-todos-quote").style.display = "none";
+
     const newTodoForm = document.querySelector("#new-todo-form");
 
     const newTodo = new Todo(
