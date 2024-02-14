@@ -11,7 +11,7 @@ function createTodoListItem(currentUser, todo, project) {
     todoListItemFirstRow.classList.add("todo-list-item-first-row");
 
     const checkBox = document.createElement("input");
-    checkBox.id = todo.title;
+    checkBox.id = todo.uuid;
     checkBox.classList.add("todo-checkbox");
     checkBox.type = "checkbox";
     checkBox.name = todo.title;
@@ -24,7 +24,7 @@ function createTodoListItem(currentUser, todo, project) {
 
     const todoTitle = document.createElement("label");
     todoTitle.classList.add("todo-title");
-    todoTitle.setAttribute("for", todo.title);
+    todoTitle.setAttribute("for", todo.uuid);
     todoTitle.textContent = todo.title;
     todoListItemFirstRow.appendChild(todoTitle);
 
