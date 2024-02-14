@@ -19,6 +19,13 @@ function createDeleteProjectBtn(currentUser, project) {
 
         currentUser.deleteProject(project);
         currentUser.updateLocalStorage();
+
+        // Display quote in project list if user has no more non-inbox projects
+        if (currentUser.getNonInboxProjects().length == 0) {
+            document.querySelector("#project-list-quote").style.display =
+                "initial";
+        }
+
         this.parentElement.remove();
     });
     return deleteProjectBtn;

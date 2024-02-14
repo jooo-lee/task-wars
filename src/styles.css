@@ -51,6 +51,24 @@ button {
     color: var(--secondary-color);
 }
 
+.quote {
+    align-self: center;
+    width: 80%;
+    max-width: 300px;
+    background: #eee;
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.quote figcaption,
+.quote blockquote {
+    margin: 16px;
+}
+
+.quote figcaption {
+    text-align: end;
+}
+
 /* ------------------------ Left Sidebar ------------------------ */
 
 .container > .left-sidebar {

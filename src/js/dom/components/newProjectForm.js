@@ -4,6 +4,9 @@ import { closeDialog } from "./dialog";
 import createProjectListItem from "./projectListItem";
 
 function addNewProject(currentUser, projectTitle) {
+    // Hide quote in project list (user will have at least project)
+    document.querySelector("#project-list-quote").style.display = "none";
+
     const newProject = new Project(projectTitle);
     currentUser.addProject(newProject);
     currentUser.updateLocalStorage();

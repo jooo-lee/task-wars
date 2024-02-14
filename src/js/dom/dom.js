@@ -64,8 +64,14 @@ function handleNewProject(currentUser) {
 
 function loadSavedProjects(currentUser) {
     const projectList = document.querySelector("#project-list");
+    const savedProjects = currentUser.getNonInboxProjects();
 
-    currentUser.getNonInboxProjects().forEach((project) => {
+    // If user has non-inbox projects, don't show quote in project list
+    if (savedProjects.length != 0) {
+        document.querySelector("#project-list-quote").style.display = "none";
+    }
+
+    savedProjects.forEach((project) => {
         const projectListItem = createProjectListItem(currentUser, project);
         projectList.appendChild(projectListItem);
     });
