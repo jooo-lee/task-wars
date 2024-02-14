@@ -1,6 +1,7 @@
 import createNewProjectDialog from "./components/newProjectDialog";
 import createProjectListItem from "./components/projectListItem";
 import { loadProject } from "./loadProject";
+import inboxIconImg from "assets/inbox.svg";
 
 function initializePage(currentUser) {
     loadSavedProjects(currentUser);
@@ -12,6 +13,13 @@ function createInbox(currentUser) {
     loadProject(currentUser, currentUser.getInbox());
 
     const inboxLink = document.querySelector("#inbox");
+
+    const inboxIcon = new Image();
+    inboxIcon.src = inboxIconImg;
+    inboxIcon.id = "inbox-img";
+    inboxIcon.alt = "Inbox icon image";
+    inboxLink.prepend(inboxIcon);
+
     inboxLink.addEventListener("click", () => {
         loadProject(currentUser, currentUser.getInbox());
     });
