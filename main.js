@@ -3632,7 +3632,7 @@ function createTodoListItem(currentUser, todo, project) {
     todoListItemFirstRow.classList.add("todo-list-item-first-row");
 
     const checkBox = document.createElement("input");
-    checkBox.id = todo.title;
+    checkBox.id = todo.uuid;
     checkBox.classList.add("todo-checkbox");
     checkBox.type = "checkbox";
     checkBox.name = todo.title;
@@ -3645,7 +3645,7 @@ function createTodoListItem(currentUser, todo, project) {
 
     const todoTitle = document.createElement("label");
     todoTitle.classList.add("todo-title");
-    todoTitle.setAttribute("for", todo.title);
+    todoTitle.setAttribute("for", todo.uuid);
     todoTitle.textContent = todo.title;
     todoListItemFirstRow.appendChild(todoTitle);
 
@@ -3997,16 +3997,30 @@ function createNewProjectDialog(currentUser) {
 
 ;// CONCATENATED MODULE: ./src/assets/inbox.svg
 const inbox_namespaceObject = __webpack_require__.p + "assets/939f2a757e3335be71bb.svg";
+;// CONCATENATED MODULE: ./src/assets/logo.png
+const logo_namespaceObject = __webpack_require__.p + "assets/8ceb7df9d50c71801945.png";
 ;// CONCATENATED MODULE: ./src/js/dom/dom.js
 
 
 
 
 
+
 function initializePage(currentUser) {
+    loadHeaderLogo();
     loadSavedProjects(currentUser);
     handleNewProject(currentUser);
     createInbox(currentUser);
+}
+
+function loadHeaderLogo() {
+    const header = document.querySelector("header");
+
+    const mythosaurLogo = new Image();
+    mythosaurLogo.src = logo_namespaceObject;
+    mythosaurLogo.id = "mythosaur-logo";
+    mythosaurLogo.alt = "Mythosaur skull emblem";
+    header.prepend(mythosaurLogo);
 }
 
 function createInbox(currentUser) {
