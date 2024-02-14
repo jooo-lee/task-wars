@@ -3995,10 +3995,12 @@ function createNewProjectDialog(currentUser) {
 
 /* harmony default export */ const components_newProjectDialog = (createNewProjectDialog);
 
-;// CONCATENATED MODULE: ./src/assets/inbox.svg
-const inbox_namespaceObject = __webpack_require__.p + "assets/939f2a757e3335be71bb.svg";
+;// CONCATENATED MODULE: ./src/assets/grogu.png
+const grogu_namespaceObject = __webpack_require__.p + "assets/8e1597374cef9aa4e776.png";
 ;// CONCATENATED MODULE: ./src/assets/logo.png
 const logo_namespaceObject = __webpack_require__.p + "assets/8ceb7df9d50c71801945.png";
+;// CONCATENATED MODULE: ./src/assets/inbox.svg
+const inbox_namespaceObject = __webpack_require__.p + "assets/939f2a757e3335be71bb.svg";
 ;// CONCATENATED MODULE: ./src/js/dom/dom.js
 
 
@@ -4006,11 +4008,21 @@ const logo_namespaceObject = __webpack_require__.p + "assets/8ceb7df9d50c7180194
 
 
 
+
 function initializePage(currentUser) {
+    createFavicon();
     loadHeaderLogo();
     loadSavedProjects(currentUser);
     handleNewProject(currentUser);
     createInbox(currentUser);
+}
+
+function createFavicon() {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.href = grogu_namespaceObject;
+    link.type = "image/x-icon";
+    document.head.appendChild(link);
 }
 
 function loadHeaderLogo() {

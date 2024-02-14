@@ -1,14 +1,24 @@
 import createNewProjectDialog from "./components/newProjectDialog";
 import createProjectListItem from "./components/projectListItem";
 import { loadProject } from "./loadProject";
-import inboxIconImg from "assets/inbox.svg";
+import groguFavicon from "assets/grogu.png";
 import mythosaurLogoImg from "assets/logo.png";
+import inboxIconImg from "assets/inbox.svg";
 
 function initializePage(currentUser) {
+    createFavicon();
     loadHeaderLogo();
     loadSavedProjects(currentUser);
     handleNewProject(currentUser);
     createInbox(currentUser);
+}
+
+function createFavicon() {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.href = groguFavicon;
+    link.type = "image/x-icon";
+    document.head.appendChild(link);
 }
 
 function loadHeaderLogo() {
