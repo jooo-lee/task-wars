@@ -283,6 +283,13 @@ function createDeleteTodoBtn(currentUser, todo, project) {
     deleteTodoBtn.addEventListener("click", function () {
         project.deleteTodo(todo);
         currentUser.updateLocalStorage();
+
+        // Display quote in list of todos if project contains no more todos
+        if (project.todos.length == 0) {
+            document.querySelector("#list-of-todos-quote").style.display =
+                "initial";
+        }
+
         this.parentElement.parentElement.remove();
     });
     return deleteTodoBtn;
@@ -3682,6 +3689,27 @@ function createTodoListItem(currentUser, todo, project) {
 function createListOfTodos(currentUser, project) {
     const listOfTodos = document.createElement("ul");
     listOfTodos.id = "list-of-todos";
+
+    // Create quote to display when current project has no todos
+    const figure = document.createElement("figure");
+    figure.id = "list-of-todos-quote";
+    figure.classList.add("quote");
+
+    const blockquote = document.createElement("blockquote");
+    blockquote.textContent = '"I will initiate self-destruct."';
+    figure.appendChild(blockquote);
+
+    const figCaption = document.createElement("figcaption");
+    figCaption.innerHTML = "&mdash; IG-11";
+    figure.appendChild(figCaption);
+
+    // Hide quote if current project has todos
+    if (project.todos.length != 0) {
+        figure.style.display = "none";
+    }
+
+    listOfTodos.appendChild(figure);
+
     for (const todo of project.todos) {
         const todoListItem = components_todoListItem(currentUser, todo, project);
         listOfTodos.appendChild(todoListItem);
@@ -3716,6 +3744,9 @@ class Todo {
 
 // Callback for handling new todo form submission
 function addNewTodo(currentUser, project) {
+    // Hide quote in list of todos (project will have at least one todo)
+    document.querySelector("#list-of-todos-quote").style.display = "none";
+
     const newTodoForm = document.querySelector("#new-todo-form");
 
     const newTodo = new todo(
@@ -3876,6 +3907,13 @@ function createDeleteProjectBtn(currentUser, project) {
 
         currentUser.deleteProject(project);
         currentUser.updateLocalStorage();
+
+        // Display quote in project list if user has no more non-inbox projects
+        if (currentUser.getNonInboxProjects().length == 0) {
+            document.querySelector("#project-list-quote").style.display =
+                "initial";
+        }
+
         this.parentElement.remove();
     });
     return deleteProjectBtn;
@@ -3915,6 +3953,9 @@ function createProjectListItem(currentUser, project) {
 
 
 function addNewProject(currentUser, projectTitle) {
+    // Hide quote in project list (user will have at least project)
+    document.querySelector("#project-list-quote").style.display = "none";
+
     const newProject = new js_project(projectTitle);
     currentUser.addProject(newProject);
     currentUser.updateLocalStorage();
@@ -4068,8 +4109,14 @@ function handleNewProject(currentUser) {
 
 function loadSavedProjects(currentUser) {
     const projectList = document.querySelector("#project-list");
+    const savedProjects = currentUser.getNonInboxProjects();
 
-    currentUser.getNonInboxProjects().forEach((project) => {
+    // If user has non-inbox projects, don't show quote in project list
+    if (savedProjects.length != 0) {
+        document.querySelector("#project-list-quote").style.display = "none";
+    }
+
+    savedProjects.forEach((project) => {
         const projectListItem = components_projectListItem(currentUser, project);
         projectList.appendChild(projectListItem);
     });
