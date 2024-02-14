@@ -9,7 +9,7 @@ class User {
     }
 
     #loadLocalStorageProjects() {
-        if (localStorage.length == 0) {
+        if (!localStorage.getItem("projects")) {
             this.#inbox = new Project("Inbox");
             this.#inbox.isDefault = true;
             this.#projects = [this.#inbox];
