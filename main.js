@@ -3641,9 +3641,9 @@ function createEditTodoBtn(currentUser, todo, project) {
 
 // Here, list item refers to the <li> tag
 function createTodoListItem(currentUser, todo, project) {
-    const li = document.createElement("li");
-    li.classList.add("todo-list-item");
-    li.setAttribute("uuid", todo.uuid);
+    const todoListItem = document.createElement("li");
+    todoListItem.classList.add("todo-list-item");
+    todoListItem.setAttribute("uuid", todo.uuid);
 
     const todoListItemFirstRow = document.createElement("div");
     todoListItemFirstRow.classList.add("todo-list-item-first-row");
@@ -3671,7 +3671,7 @@ function createTodoListItem(currentUser, todo, project) {
     todoDueDate.textContent = `Due: ${todo.dueDate}`;
     todoListItemFirstRow.appendChild(todoDueDate);
 
-    li.appendChild(todoListItemFirstRow);
+    todoListItem.appendChild(todoListItemFirstRow);
 
     const todoBtnsContainer = document.createElement("div");
     todoBtnsContainer.classList.add("todo-btns-container");
@@ -3685,9 +3685,9 @@ function createTodoListItem(currentUser, todo, project) {
     const deleteTodoBtn = components_deleteTodoBtn(currentUser, todo, project);
     todoBtnsContainer.appendChild(deleteTodoBtn);
 
-    li.appendChild(todoBtnsContainer);
+    todoListItem.appendChild(todoBtnsContainer);
 
-    return li;
+    return todoListItem;
 }
 
 /* harmony default export */ const components_todoListItem = (createTodoListItem);
