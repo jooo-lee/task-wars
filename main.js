@@ -284,13 +284,17 @@ function createDeleteTodoBtn(currentUser, todo, project) {
         project.deleteTodo(todo);
         currentUser.updateLocalStorage();
 
+        // Remove todo <li> element from DOM
+        const todoListItemToDelete = document.querySelector(
+            `[uuid="${todo.uuid}"]`
+        );
+        todoListItemToDelete.remove();
+
         // Display quote in list of todos if project contains no more todos
         if (project.todos.length == 0) {
             document.querySelector("#list-of-todos-quote").style.display =
                 "initial";
         }
-
-        this.parentElement.parentElement.remove();
     });
     return deleteTodoBtn;
 }
@@ -3517,8 +3521,13 @@ function editTodo(currentUser, todo, project) {
 
     // Replace old todo list item with new one in DOM
     const editedTodoIndex = project.todos.indexOf(todo);
-    const oldTodoListItem =
-        document.querySelector("#list-of-todos").children[editedTodoIndex];
+    const todoListItems = Array.from(
+        document.getElementsByClassName("todo-list-item")
+    );
+    console.log(todoListItems);
+    const oldTodoListItem = todoListItems.find(
+        (listItem) => listItem.getAttribute("uuid") == todo.uuid
+    );
     const newTodoListItem = components_todoListItem(currentUser, todo, project);
     oldTodoListItem.replaceWith(newTodoListItem);
 
@@ -3634,6 +3643,7 @@ function createEditTodoBtn(currentUser, todo, project) {
 function createTodoListItem(currentUser, todo, project) {
     const li = document.createElement("li");
     li.classList.add("todo-list-item");
+    li.setAttribute("uuid", todo.uuid);
 
     const todoListItemFirstRow = document.createElement("div");
     todoListItemFirstRow.classList.add("todo-list-item-first-row");
@@ -3908,13 +3918,17 @@ function createDeleteProjectBtn(currentUser, project) {
         currentUser.deleteProject(project);
         currentUser.updateLocalStorage();
 
+        // Remove project <li> element from DOM
+        const projectListItemToDelete = document.querySelector(
+            `[uuid="${project.uuid}"]`
+        );
+        projectListItemToDelete.remove();
+
         // Display quote in project list if user has no more non-inbox projects
         if (currentUser.getNonInboxProjects().length == 0) {
             document.querySelector("#project-list-quote").style.display =
                 "initial";
         }
-
-        this.parentElement.remove();
     });
     return deleteProjectBtn;
 }
@@ -3928,6 +3942,7 @@ function createDeleteProjectBtn(currentUser, project) {
 function createProjectListItem(currentUser, project) {
     const projectListItem = document.createElement("li");
     projectListItem.classList.add("project-list-item");
+    projectListItem.setAttribute("uuid", project.uuid);
 
     const projectLink = document.createElement("a");
     projectLink.href = "#";
