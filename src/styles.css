@@ -28,6 +28,13 @@
     grid-area: header;
     background-color: var(--accent-color);
     color: var(--main-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#mythosaur-logo {
+    width: 50px;
 }
 
 .container a {

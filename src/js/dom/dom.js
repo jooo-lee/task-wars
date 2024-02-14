@@ -2,11 +2,23 @@ import createNewProjectDialog from "./components/newProjectDialog";
 import createProjectListItem from "./components/projectListItem";
 import { loadProject } from "./loadProject";
 import inboxIconImg from "assets/inbox.svg";
+import mythosaurLogoImg from "assets/logo.png";
 
 function initializePage(currentUser) {
+    loadHeaderLogo();
     loadSavedProjects(currentUser);
     handleNewProject(currentUser);
     createInbox(currentUser);
+}
+
+function loadHeaderLogo() {
+    const header = document.querySelector("header");
+
+    const mythosaurLogo = new Image();
+    mythosaurLogo.src = mythosaurLogoImg;
+    mythosaurLogo.id = "mythosaur-logo";
+    mythosaurLogo.alt = "Mythosaur skull emblem";
+    header.prepend(mythosaurLogo);
 }
 
 function createInbox(currentUser) {
