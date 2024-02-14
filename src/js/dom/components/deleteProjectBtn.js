@@ -20,13 +20,17 @@ function createDeleteProjectBtn(currentUser, project) {
         currentUser.deleteProject(project);
         currentUser.updateLocalStorage();
 
+        // Remove project <li> element from DOM
+        const projectListItemToDelete = document.querySelector(
+            `[uuid="${project.uuid}"]`
+        );
+        projectListItemToDelete.remove();
+
         // Display quote in project list if user has no more non-inbox projects
         if (currentUser.getNonInboxProjects().length == 0) {
             document.querySelector("#project-list-quote").style.display =
                 "initial";
         }
-
-        this.parentElement.remove();
     });
     return deleteProjectBtn;
 }

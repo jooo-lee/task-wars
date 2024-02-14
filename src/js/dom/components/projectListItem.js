@@ -4,6 +4,7 @@ import createDeleteProjectBtn from "./deleteProjectBtn";
 function createProjectListItem(currentUser, project) {
     const projectListItem = document.createElement("li");
     projectListItem.classList.add("project-list-item");
+    projectListItem.setAttribute("uuid", project.uuid);
 
     const projectLink = document.createElement("a");
     projectLink.href = "#";
