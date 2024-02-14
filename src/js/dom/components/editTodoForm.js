@@ -16,8 +16,13 @@ function editTodo(currentUser, todo, project) {
 
     // Replace old todo list item with new one in DOM
     const editedTodoIndex = project.todos.indexOf(todo);
-    const oldTodoListItem =
-        document.querySelector("#list-of-todos").children[editedTodoIndex];
+    const todoListItems = Array.from(
+        document.getElementsByClassName("todo-list-item")
+    );
+    console.log(todoListItems);
+    const oldTodoListItem = todoListItems.find(
+        (listItem) => listItem.getAttribute("uuid") == todo.uuid
+    );
     const newTodoListItem = createTodoListItem(currentUser, todo, project);
     oldTodoListItem.replaceWith(newTodoListItem);
 

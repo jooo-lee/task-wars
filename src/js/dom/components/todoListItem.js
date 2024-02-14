@@ -6,6 +6,7 @@ import createEditTodoBtn from "./editTodoBtn";
 function createTodoListItem(currentUser, todo, project) {
     const li = document.createElement("li");
     li.classList.add("todo-list-item");
+    li.setAttribute("uuid", todo.uuid);
 
     const todoListItemFirstRow = document.createElement("div");
     todoListItemFirstRow.classList.add("todo-list-item-first-row");
