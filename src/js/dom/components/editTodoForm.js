@@ -15,11 +15,9 @@ function editTodo(currentUser, todo, project) {
     currentUser.updateLocalStorage();
 
     // Replace old todo list item with new one in DOM
-    const editedTodoIndex = project.todos.indexOf(todo);
     const todoListItems = Array.from(
         document.getElementsByClassName("todo-list-item")
     );
-    console.log(todoListItems);
     const oldTodoListItem = todoListItems.find(
         (listItem) => listItem.getAttribute("uuid") == todo.uuid
     );
